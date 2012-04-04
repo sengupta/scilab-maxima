@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="manually generated">
+   <meta name="keywords" content="maxima,scilab,symbolic,toolbox">
+   <meta name="description" content="Tutorial: Symbolic Toolbox for Scilab.">
+
+<title>Symbolic object generation</title>
+<link rel="stylesheet" href="../brown.css" type="text/css">
+<link rel="shortcut icon" href="../favicon.ico"/>
+</head>
+
+<body text="#330000" bgcolor="#cccccc" link="#000000" vlink="#000000" alink="#000000">
+
+<center><table class="bod"><tr><td>
+
+<a name="top"></a>
+<h1>Symbolic object generation</h1>
+
+<p><hr></p>
+
+
+<ul>
+ <li><span class="focus">Symbolic object generation</span>
+     <ul>
+         <li><a title="Generation and conversion to SYM-objects" href="#f_sym"><tt class="function">sym</tt></a></li>
+         <li><a title="Generation of 1-by-1 SYM-objects" href="#f_syms"><tt class="function">syms</tt></a></li>
+         <li><a title="Symbolic type: real, imaginary...." href="#f_symtype"><tt class="function">symtype</tt></a></li>
+         <li><a title="Retrieves atoms in a symbolic expression" href="#f_findsym"><tt class="function">findsym</tt></a></li>
+         <li><a title="Symbolic lists (only for function maxima)" href="#f_syml"><tt class="function">syml</tt></a></li>
+     </ul></li>
+ <li><a class="intext" href="elementary.html">Elementary / trigonometric functions</a></li>
+ <li><a class="intext" href="polynomial.html">Polynomial / rational functions</a></li>
+ <li><a class="intext" href="matrix.html">Matrix manipulations</a></li>
+ <li><a class="intext" href="calculus.html">Calculus</a></li>
+ <li><a class="intext" href="numerical.html">Evaluation and substitution</a></li>
+ <li><a class="intext" href="general.html">General functions</a></li>
+ <li><a class="intext" href="kernel.html">Access to Maxima, communication Scilab&nbsp;/ Maxima</a></li>
+</ul>
+
+<p><table class = "button"><tr>
+   <td class = "button"><a href="../index.html">INDEX</a></td>
+   <td class = "button"><a href="../functions.html">FUNCTIONS</a></td>
+</tr></table></p>
+
+<!-- ================================================================ -->
+
+<p><hr></p>
+<a name="sym"></a>
+<a name="f_sym"></a>
+<p>
+The function <tt class="function">sym</tt> creates symbolic objects (sym-objects) and transforms constant, string,
+polynomial and rational objects to sym-objects.
+</p>
+<p>
+Symbolic atoms (<i>e.g.</i>, <tt>a</tt> and <tt>b</tt> below)
+are complex by default (at least for versions of Maxima higher than 5.9.3). It is possible
+to declare one of the following types for symbolic variables:
+<tt>even</tt>, <tt>odd</tt>, <tt>integer</tt>, <tt>rational</tt>, <tt>irrational</tt>,
+<tt>real</tt>, <tt>imaginary</tt>, <tt>complex</tt> (see also function
+<a href="#f_syms"><tt class="function">syms</tt></a>).
+<pre>
+<span class="cc">// Symbolic objects from atoms (slow)</span>
+
+   a = <tt class="function">sym</tt>('a');
+   b = <tt class="function">sym</tt>('b','real');
+   M = [a*b*a*b 1/(1/a);<tt class="function">cos</tt>(-a)^2-1 0]
+
+   <span class="mresults">M  =
+
+   !a^2*b^2     a  !
+   !               !
+   !cos(a)^2-1  0  !</span>
+
+<span class="cc">// Symbolic objects from strings (much faster)</span>
+
+   str = ['a*b*a*b' '1/(1/a)';'cos(-a)^2-1' '0'];
+   M = <tt class="function">sym</tt>(str)
+
+   <span class="mresults">M  =
+
+   !a^2*b^2     a  !
+   !               !
+   !cos(a)^2-1  0  !</span>
+
+<span class="cc">// Alternatively</span>
+
+   str = '[a*b*a*b 1/(1/a);cos(-a)^2-1 0]';
+   M = <tt class="function">sym</tt>(str);
+</pre>
+</p>
+
+<p>
+Now are presented some hidden conversions performed by the function <tt class="function">sym</tt>
+<pre>
+<span class="cc">// Mixture of constant, sym, string, polynomial and rational objects</span>
+
+   s = poly(0,'s');
+   a = <tt class="function">sym</tt>('a');
+   M = [1/s a+1;'s'*a*(1/s) a*s]
+
+   <span class="mresults">M  =
+
+   !1/s  a+1  !
+   !          !
+   !a    a*s  !</span>
+</pre>
+</p>
+
+<p>
+<a name="f_symtype"></a><a name="f_syms"></a>
+The function <tt class="function">syms</tt> is a shortcut for defining 1-by-1 real sym-objects
+<pre>
+   <tt class="function">syms</tt> a b real
+   c = a + %i*b;
+   <tt class="function">symtype</tt>(a)
+
+   <span class="mresults">ans  =
+
+   real</span>
+
+   <tt class="function">symtype</tt>(c)
+
+   <span class="mresults">ans  =
+
+   complex</span>
+</pre>
+</p>
+
+<p>
+<a name="f_findsym"></a>
+The function <tt class="function">findsym</tt> identifies symbolic parameters
+from a symbolic expression.
+<pre>
+   P = <tt class="function">sym</tt>('3*a^3*b^2*c+8*a^2*c-a^2*c');
+   params = <tt class="function">findsym</tt>(P)
+
+   <span class="mresults">params  =
+
+   !a  c  b  !</span>
+</pre>
+</p>
+
+<p>
+<a name="f_findsym"></a>
+The function <tt class="function">findsym</tt> identifies symbolic parameters
+from a symbolic expression.
+<pre>
+   P = <tt class="function">sym</tt>('3*a^3*b^2*c+8*a^2*c-a^2*c');
+   params = <tt class="function">findsym</tt>(P)
+
+   <span class="mresults">params  =
+
+   !a  c  b  !</span>
+</pre>
+</p>
+
+<p>
+<a name="f_syml"></a>
+The function <tt class="function">syml</tt> defines symbolic lists (syml-objects).
+These objects are useful only as input arguments of the function
+<a href="#f_maxima"><tt class="function">maxima</tt></a>.
+<pre>
+   equ = <tt class="function">syml</tt>(['a*x+b*y=3','a*x*y=2']);
+
+   <span class="mresults">equ  =
+
+   symbolic list -> [b*y+a*x = 3,a*x*y = 2]</span>
+</pre>
+</p>
+
+<p><table class = "button"><tr><td class = "button"><a href="objects.html">TOP</a></td></tr></table></p>
+</td></tr></table></center>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body></html>

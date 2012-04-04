@@ -1,0 +1,52 @@
+<html><head>
+<title>SymT function: ra2str</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: ra2str</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>Utility for evaluation from values in the workspace of rational
+expressions .
+</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[str,var] = <tt class="function">ra2str</tt>(r_expr)</tt></li>
+</ul>
+
+<p><b>Input arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt><tt>r_expr</tt></tt></td>
+<td class="args" width="80%">Scilab standard rational expression
+</td></tr>
+</table></p>
+
+<p><b>Output arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>str</tt></td>
+<td class="args" width="80%">String which can be evaluated
+</td></tr>
+</table></p>
+
+<p><hr></p>
+
+<pre>
+<u>EXAMPLE
+</u>
+   r_expr = [%s 3*%s 1/%s;2+1/(1+3*%s) 2 %s];
+   [str,var] = ra2str(r_expr)
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>

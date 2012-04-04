@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="manually generated">
+   <meta name="keywords" content="maxima,scilab,symbolic,toolbox">
+   <meta name="description" content="Tutorial: Symbolic Toolbox for Scilab.">
+
+<title>Matrix manipulations.</title>
+<link rel="stylesheet" href="../brown.css" type="text/css">
+<link rel="shortcut icon" href="../favicon.ico"/>
+</head>
+
+<body text="#330000" bgcolor="#cccccc" link="#000000" vlink="#000000" alink="#000000">
+
+<center><table class="bod"><tr><td>
+
+<a name="top"></a>
+<h1>Matrix manipulations.</h1>
+
+<p><hr></p>
+
+<ul>
+ <li><a class="intext" href="objects.html">Symbolic object generation</a></li>
+ <li><a class="intext" href="elementary.html">Elementary / trigonometric functions</a></li>
+ <li><a class="intext" href="polynomial.html">Polynomial / rational functions</a></li>
+ <li><span class="focus">Matrix manipulations</span>
+     <ul>
+         <li><a title="" href="#f_eig"><tt class="function">eig</tt>, <tt class="function">det</tt>, <tt class="function">inv</tt></a></li>
+         <li><a title="" href="#f_diag"><tt class="function">diag</tt>, <tt class="function">trace</tt></a></li>
+         <li><a title="" href="#f_size"><tt class="function">size</tt></a></li>
+         <li><a title="" href="#f_null"><tt class="function">null</tt>, <tt class="function">rank</tt>, <tt class="function">colspace</tt>, <tt class="function">rref</tt></a></li>
+         <li><a title="" href="#f_triu"><tt class="function">triu</tt>, <tt class="function">tril</tt></a></li>
+     </ul></li>
+ <li><a class="intext" href="calculus.html">Calculus</a></li>
+ <li><a class="intext" href="numerical.html">Evaluation and substitution</a></li>
+ <li><a class="intext" href="general.html">General functions</a></li>
+ <li><a class="intext" href="kernel.html">Access to Maxima, communication Scilab&nbsp;/ Maxima</a></li>
+</ul>
+
+<p><table class = "button"><tr>
+   <td class = "button"><a href="../index.html">INDEX</a></td>
+   <td class = "button"><a href="../functions.html">FUNCTIONS</a></td>
+</tr></table></p>
+
+<!-- ================================================================ -->
+
+<p><hr></p>
+
+<p>
+<a name="f_eig"></a><a name="f_det"></a><a name="f_inv"></a>
+We have already introduced symbolic matrix representations. Here we introduce a few
+functions.
+<pre>
+<span class="cc">// Definition of a symbolic matrix</span>
+
+   <tt class="function">syms</tt> a b c
+   M = [a^2+3 0 b*c;1 c^3 b;1 2/a 3/(1+4*b)]
+
+   <span class="mresults">M  =
+
+   !a^2+3  0    b*c        !
+   !                       !
+   !1      c^3  b          !
+   !                       !
+   !1      2/a  3/(4*b+1)  !</span>
+
+<span class="cc">// Determinant</span>
+
+   <tt class="function">det</tt>(M)
+
+   <span class="mresults">ans  =
+
+   (a^2+3)*(3*c^3/(4*b+1)-2*b/a)+b*c*(2/a-c^3)</span>
+
+<span class="cc">// Inversion followed by a simplification</span>
+
+   N = <tt class="function">inv</tt>(M);
+   <tt class="function">simple</tt>(M*N)
+
+   <span class="mresults">ans  =
+
+   !1  0  0  !
+   !         !
+   !0  1  0  !
+   !         !
+   !0  0  1  !</span>
+
+<span class="cc">// Eigenvalues (warning: see <tt class="function">hlp sym/eig</tt>)</span>
+
+   <tt class="function">syms</tt> a b
+   P=[a a^2;b 3];
+   val = <tt class="function">eig</tt>(P)
+
+   <span class="mresults">val  =
+
+   !(-sqrt(4*a^2*b+a^2-6*a+9)+a+3)/2  !
+   !                                  !
+   !(sqrt(4*a^2*b+a^2-6*a+9)+a+3)/2   !</span>
+</pre>
+</p>
+
+
+<a name="f_diag"></a><a name="f_trace"></a>
+Other functions
+<ul>
+  <li><tt class="function">diag</tt>, retrieves the diagonal of a
+  square symbolic matrix or, if applied to a symbolic vector, generates
+  a square diagonal matrix.</li>
+  <li><tt class="function">trace</tt> computes the trace of a
+  symbolic matrix.</li>
+  <a name="f_size"></a>
+  <li><tt class="function">size</tt>, can be invoked as
+     <tt>n1n2 = <tt class="function">size</tt>(M)</tt>,
+     <tt>n1 = <tt class="function">size</tt>(M,1)</tt>,
+     <tt>n2 = <tt class="function">size</tt>(M,2)</tt>,
+     <tt>[n1,n2] = <tt class="function">size</tt>(M)</tt>.</li>
+  <li><a name="f_null"></a><a name="f_rank"></a><a name="f_colspace"></a><a name="f_rref"></a>
+     <tt class="function">null</tt>, computes the null space.</li>
+  <li><tt class="function">rank</tt>, computes the rank.</li>
+  <li><tt class="function">colspace</tt>, computes the column span.</li>
+  <li><tt class="function">rref</tt>, computes the row echelon form of a matrix (Gaussian elimination).</li>
+  <li><a name="f_triu"></a><a name="f_tril"></a>
+  <tt class="function">triu</tt> and <tt class="function">tril</tt> compute upper and
+  lower triangular forms of a symbolic matrix.</li>
+</ul>
+
+<p><table class = "button"><tr><td class = "button"><a href="matrix.html">TOP</a></td></tr></table></p>
+</td></tr></table></center>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body></html>

@@ -1,0 +1,50 @@
+<html><head>
+<title>SymT function: laplace</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Laplace transform. Recognizes the functions or strings: delta, exp, log, sin, cos, sinh, cosh, erf and ilt (name of the Maxima inverse Laplace transform).<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[B] = <font color="green"><tt>laplace</tt></font>(A[,t[,s]])</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>A</tt></font></b>&nbsp;: &nbsp;
+Symbolic expression.</li>
+<li><b><font color="green"><tt>t</tt></font></b>&nbsp;: &nbsp;
+Time variable ('<font color="green"><tt>t</tt></font>' by default)</li>
+<li><b><font color="green"><tt>s</tt></font></b>&nbsp;: &nbsp;
+Laplace variable ('<font color="green"><tt>s</tt></font>' by default)
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>B</tt></font></b>&nbsp;: &nbsp;
+Symbolic expression.
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="ilaplace.html"><font color="green"><tt>ilaplace</tt></font></a>, <a href="sym_integ.html"><font color="green"><tt>sym/integ</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLE</u>
+    syms t s
+    laplace('3*delta(t-2)+cos(t)*sin(t)',t,s)
+    laplace('3*delta(t-2)+cos(t)*sin(t)',t,'p')
+    laplace(diff(cos(t)^3,t),t,s)
+</pre></font>
+</body>
+</html>

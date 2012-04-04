@@ -1,0 +1,56 @@
+<html><head>
+<title>SymT function: %sym_gcd</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Computes the greatest common divisor of polynomials.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[gg,f1,f2] = <font color="green"><tt>gcd</tt></font>(aa,bb,xx)</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>aa</tt></font></b>&nbsp;: &nbsp;
+Symbolic polynomial</li>
+<li><b><font color="green"><tt>bb</tt></font></b>&nbsp;: &nbsp;
+Symbolic polynomial</li>
+<li><b><font color="green"><tt>xx</tt></font></b>&nbsp;: &nbsp;
+Variable considered (multivariate polynomials).
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>gg</tt></font></b>&nbsp;: &nbsp;
+Greatest common divisor symbolic polynomial</li>
+<li><b><font color="green"><tt><font color="green"><tt>f1</tt></font></tt></font></b>&nbsp;: &nbsp;
+Symbolic polynomial</li>
+<li><b><font color="green"><tt><font color="green"><tt>f2</tt></font></tt></font></b>&nbsp;: &nbsp;
+Symbolic polynomial: <font color="green"><tt>p1</tt></font>*<font color="green"><tt><font color="green"><tt>f1</tt></font></tt></font>+<font color="green"><tt>p2</tt></font>*<font color="green"><tt><font color="green"><tt>f2</tt></font></tt></font> = <font color="green"><tt>gg</tt></font>
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="sym_lcm.html"><font color="green"><tt>sym/lcm</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLE</u>
+    syms x
+    p1 = x^3+x;
+    p2 = x^5+x^3+4*x^2+4;
+    [g,f1,f2] = gcd(p1,p2)
+
+    simple(f1*p1+f2*p2-g)
+</pre></font>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<html><head>
+<title>SymT function: str2max2sym</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Transforms a set of strings into a set of instructions in Maxima syntax (see <font color="green"><tt><font color="green"><tt>scistr2max</tt></font></tt></font>). The Maxima commands are executed (see <font color="green"><tt>unix_g</tt></font>). Then, the result is treated and converted to a symbolic object.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[resp,iserr] = <font color="green"><tt>str2max2sym</tt></font>(str1[,flag])</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt><font color="green"><tt>str1</tt></font></tt></font></b>&nbsp;: &nbsp;
+String like 'conjugate(a+%i*<font color="green"><tt>b</tt></font>)' (a function applied to
+an argument still in Scilab syntax.</li>
+<li><b><font color="green"><tt>flag</tt></font></b>&nbsp;: &nbsp;
+String equal to <font color="green"><tt>'str'</tt></font>, <font color="green"><tt>'vec'</tt></font> or '<font color="green"><tt>sym</tt></font>' (default: <font color="green"><tt>flag</tt></font> =
+'<font color="green"><tt>sym</tt></font>'). This <font color="green"><tt>flag</tt></font> sets the type of the output argument
+<font color="green"><tt>sym</tt></font> as follows:
+
+- case <font color="green"><tt>'str'</tt></font> -> concatenated string
+
+- case <font color="green"><tt>'vec'</tt></font> -> vector of strings
+
+- case '<font color="green"><tt>sym</tt></font>' -> symbolic object
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>resp</tt></font></b>&nbsp;: &nbsp;
+<font color="green"><tt>sym</tt></font>-object,</li>
+<li><b><font color="green"><tt>iserr</tt></font></b>&nbsp;: &nbsp;
+Should be equal to <font color="green"><tt>0</tt></font> if no error occured.
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="max2scistr.html"><font color="green"><tt>max2scistr</tt></font></a>, <a href="scistr2max.html"><font color="green"><tt>scistr2max</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLE</u>
+   resp = str2max2sym('matrix([a,b],[c,d])','cos(%)')
+   resp = str2max2sym(['a','b';'c','d'],'cos(%)')
+   resp = str2max2sym('[a,b;c,d]','cos(%)')
+</pre></font>
+</body>
+</html>

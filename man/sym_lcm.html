@@ -1,0 +1,48 @@
+<html><head>
+<title>SymT function: %sym_lcm</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Computes the least common multiple of two polynomials.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[ll] = <font color="green"><tt>lcm</tt></font>(aa,bb)</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>aa</tt></font></b>&nbsp;: &nbsp;
+Symbolic polynomial</li>
+<li><b><font color="green"><tt>bb</tt></font></b>&nbsp;: &nbsp;
+Symbolic polynomial
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>ll</tt></font></b>&nbsp;: &nbsp;
+Least common multiple symbolic polynomial
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="sym_gcd.html"><font color="green"><tt>sym/gcd</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLE</u>
+    syms x y
+    p1 = y^3+x;
+    p2 = x^5+x^3+4*x^2+4;
+    l = lcm(p1,p2)
+</pre></font>
+</body>
+</html>

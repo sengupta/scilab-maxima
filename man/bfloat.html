@@ -1,0 +1,58 @@
+<html><head>
+<title>SymT function: bfloat</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Converts all numbers and functions of numbers in input argument to bigfloat numbers.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[bb] = <font color="green"><tt>bfloat</tt></font>(aa,nn)</tt></font></b></li>
+</ul>
+<br>
+
+<br><font color="blue"><b>Description</b></font><br>
+
+<br>Big <font color="green"><tt>float</tt></font> numbers might have a very large number of significant
+digits, therefore, these numbers are meaningless in Scilab
+workspace. For this reason the Maxima form (<i>e.g.,</i> <font color="green"><tt>3</tt></font>.<font color="green"><tt>333333b</tt></font>-<font color="green"><tt>1</tt></font>)
+is preserver. For an evaluation in Scilab workspace, use the
+function double.
+<br><br>
+
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>aa</tt></font></b>&nbsp;: &nbsp;
+Symbolic expression or symbolic number</li>
+<li><b><font color="green"><tt>nn</tt></font></b>&nbsp;: &nbsp;
+number of significant digits
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>bb</tt></font></b>&nbsp;: &nbsp;
+Symbolic expression or symbolic number
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="float.html"><font color="green"><tt>float</tt></font></a>, <a href="sym_dbl.html"><font color="green"><tt>sym/dbl</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLE:</u>
+    x = log(sym('3')) - log(3)
+    y = float(x)
+
+    bfloat(sym('%pi'),2400) // pi with 2400 digits
+</pre></font>
+</body>
+</html>

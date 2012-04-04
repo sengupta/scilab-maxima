@@ -1,0 +1,74 @@
+<html><head>
+<title>SymT function: extractlist</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: extractlist</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>This function extracts symbolic objects from some kinds of strings returned by Maxima. It is a sub-function of the function <tt class="function">maxima</tt> so, can be ignored by the user.</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[lists] = <tt class="function">extractlist</tt>(str)</tt></li>
+</ul>
+
+<p><b>Description</b></p>
+
+The kind of strings supported by this function consists of substrings limited by square brackets. In each sub-string an equality is expected. Example of supported strings:
+<br><br>
+<tt>[[x = s_x1,y = s_y1,z = s_z1],[x = s_x2,y = s_y2, z = s_z2]]</tt>
+<br><br>
+This function returns a structured array of the form:
+<br><br>
+<tt>lists.x(1) = s_x1; lists.x(2) = s_x2;</tt>
+<br><br>
+<tt>lists.y(1) = s_y1; lists.y(2) = s_y2;</tt>
+<br><br>
+<tt>lists.z(1) = s_z1; lists.z(2) = s_z2;</tt>
+<br><br>
+in which <tt>s_x1</tt>,<tt> s_y1</tt>,... are symbolic objects.
+<p><b>Input arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>str</tt></td>
+<td class="args" width="80%">String returned by some Maxima functions (see the above
+example).
+</td></tr>
+</table></p>
+
+<p><b>Output arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>lists</tt></td>
+<td class="args" width="80%">Structured array containing symbolic objects. The field
+names of this structured array are the expected variable
+names (see the above example).
+</td></tr>
+</table></p>
+
+<p><b>See also</b>: <a href="maxima.html"><tt class="function">maxima</tt></a>.</p><p><hr></p>
+
+<pre>
+<u>EXAMPLES</u>
+   sym1 = maxima('solve','a*x^2-x+3=0','x');
+   sym1.x
+
+   equs = syml(['a*x+2*y-5*z=a','x^2=4','a*x+b*y=5']);
+   unkn = syml(['x','y','z']);
+   sym2 = maxima('solve',equs,unkn);
+   sym2.x
+   sym2.y
+   sym2.z
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>

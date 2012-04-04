@@ -1,0 +1,49 @@
+<html><head>
+<title>SymT function: max2scistr</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: max2scistr</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>Transforms a string in Maxima syntax to Scilab syntax</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[str2] = <tt class="function">max2scistr</tt>(str1)</tt></li>
+</ul>
+
+<p><b>Description</b></p>
+
+Treats in particular matrices. If a function is applied to a
+matrix, say cos(matrix([...])) this function is applied element
+by element (provisional). For improving this feature, the string
+associated to a symbolic object (a.<tt><tt>str1</tt></tt>) must be replaced by a
+list or a series of strings.
+<p><b>Input arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt><tt>str1</tt></tt></td>
+<td class="args" width="80%">String compatible with Maxima
+</td></tr>
+</table></p>
+
+<p><b>Output arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt><tt>str2</tt></tt></td>
+<td class="args" width="80%">String compatible with Scilab (used for display or evaluation)
+</td></tr>
+</table></p>
+
+<p><b>See also</b>: <a href="scistr2max.html"><tt class="function">scistr2max</tt></a>, <a href="str2max2sym.html"><tt class="function">str2max2sym</tt></a>.</p></td></tr></table></center>
+
+</body>
+</html>

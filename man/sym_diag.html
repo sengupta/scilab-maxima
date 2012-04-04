@@ -1,0 +1,52 @@
+<html><head>
+<title>SymT function: %sym_diag</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Extracts the diagonal of a symbolic square matrix or creates a matrix with given symbolic diagonal.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[B] = <font color="green"><tt>diag</tt></font>(A[,kk])</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>A</tt></font></b>&nbsp;: &nbsp;
+Symbolic square matrix or symbolic vector.</li>
+<li><b><font color="green"><tt>kk</tt></font></b>&nbsp;: &nbsp;
+Integer ignored if <font color="green"><tt>A</tt></font> is a vector. If <font color="green"><tt>kk</tt></font> = <font color="green"><tt>0</tt></font> (default), <font color="green"><tt>B</tt></font>
+is the main diagonal, if <font color="green"><tt>kk</tt></font> > <font color="green"><tt>0</tt></font>, <font color="green"><tt>B</tt></font> is the kkth upper subdiagonal, if <font color="green"><tt>kk</tt></font> < <font color="green"><tt>0</tt></font>, <font color="green"><tt>B</tt></font> is the |k|th lower subdiagonal
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>B</tt></font></b>&nbsp;: &nbsp;
+Symbolic vector if <font color="green"><tt>A</tt></font> is not a vector of a square symbolic
+matrix if <font color="green"><tt>A</tt></font> is a vector.
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="sym_eig.html"><font color="green"><tt>sym/eig</tt></font></a>, <a href="sym_trace.html"><font color="green"><tt>sym/trace</tt></font></a>, <a href="sym_triu.html"><font color="green"><tt>sym/triu</tt></font></a>, <a href="sym_tril.html"><font color="green"><tt>sym/tril</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLE</u>
+    syms a b c d
+    M = [a^5*b 4 d;a*b c^3*d a*d;1 2 3]
+    N = diag(M)
+    diag(N)
+    diag(M,1)
+    diag(M,-1)
+</pre></font>
+</body>
+</html>

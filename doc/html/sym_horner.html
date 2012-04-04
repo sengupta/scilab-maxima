@@ -1,0 +1,53 @@
+<html><head>
+<title>SymT function: %sym_horner</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: %sym_horner</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>Factorization of rational expressions using the Maxima function horner.</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[B] = <tt class="function">horner</tt>(A[,xx])</tt></li>
+</ul>
+
+<p><b>Input arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>A</tt></td>
+<td class="args" width="80%">Rational symbolic expression</td></tr>
+<tr><td class="args"><tt>xx</tt></td>
+<td class="args">Symbolic atom appearing in <tt>A</tt> selected for factorisations.
+</td></tr>
+</table></p>
+
+<p><b>Output arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>B</tt></td>
+<td class="args" width="80%">Symbolic expression in horner form.
+</td></tr>
+</table></p>
+
+<p><b>See also</b>: <a href="sym_expand.html"><tt class="function">sym/expand</tt></a>, <a href="sym_factor.html"><tt class="function">sym/factor</tt></a>, <a href="sym_simple.html"><tt class="function">sym/simple</tt></a>.</p><p><hr></p>
+
+<pre>
+<u>EXAMPLE</u>
+    A = sym('((a^2+b+c)^2-(a+b+c))/(a^2-b^2)^2');
+    A = expand(A)
+    B = horner(A,'a')
+    B = horner(A,'b')
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+body {
+   Font-Family: Verdana, Lucida, Sans-Serif;
+   Color: #330000;
+   Background-Color: #CCCCCC;
+   background-image:url('fond2.gif');
+   Font-Size: 13pt;
+   Padding:20px;
+}
+
+a:hover {
+   background-color: #EEEEDD;
+   font-weight: normal;
+   border-width: 1px;
+   border-style: solid;
+   border-color: brown;
+}
+a {
+   font-weight: normal;
+   font-style: oblique;
+   text-decoration: none;
+   color: #330000;
+}
+a tt {
+   text-decoration: none;
+   font-style: normal;
+}
+a.intext {
+   text-decoration: underline;
+}
+a.title {
+   font-style: normal;
+   font-weight: bold
+}
+
+h1 {
+   background: #eeeeee;
+   font-family: Verdana, Lucida, Sans-Serif;
+   font-size: 18pt;
+   font-weight: bold;
+}
+h2 {
+   background: #eeeeee;
+   font-family: Verdana, Lucida, Sans-Serif;
+   font-size: 16pt;
+   font-weight: bold;
+}
+h3 {
+   background: #eeeeee;
+   font-family: Verdana, Lucida, Sans-Serif;
+   font-size: 14pt;
+   font-weight: bold;
+}
+
+table {
+   margin-left:5mm;
+}
+table.bod{
+   Background-Color: #CCCCCC;
+   width:800px;
+   Text-Align: justify;
+}
+table.button {
+   margin:0mm;
+}
+
+
+td {
+   padding:5mm;
+   background-color:#dddddd;
+   Font-Size: 13pt;
+}
+td.help{
+   Background-Color: #EEEEEE;
+   text-align: left;
+   Padding: 5px;
+}
+td.help a {
+   border-width: 1px;
+   border-style: solid;
+   border-color: #EEEEEE;
+}
+td.help a:hover {
+   background-color: #EEEEDD;
+   font-weight: normal;
+   border-width: 1px;
+   border-style: solid;
+   border-color: brown;
+}
+td.button {
+   border-width: 2px;
+   border-style: solid;
+   border-color: brown;
+   padding: 3px;
+   font-weight: bold;
+   width:120px;
+   text-align: center;
+   background: #EEEEEE;
+}
+td.button a {
+   font-style: normal;
+   color: #330000;
+}
+td.button a:hover {
+   background: brown;
+   color: #EEEEEE;
+}
+td.args {
+   background: #EEEEEE;
+   Padding-left: 15px;
+   Padding-top: 2px;
+   Padding-bottom: 2px;
+   vertical-align: top;
+}
+
+pre {
+   margin-left:5mm;
+   padding-left:5mm;
+   background-color:#EEEEEE;
+   width:700px;
+   Font-Size: 13pt;
+   font-weight: bold;
+   color:#884400;
+}
+pre.args{
+   width:500px;
+}
+pre.scilab{
+   background-color:#EEEEEE;
+}
+pre.matlab{
+   background-color:#ffffcc;
+}
+pre.narrow{
+   width:400px;
+}
+tt {
+   Font-Size: 13pt;
+   font-weight: bold;
+   color:#884400;
+}
+
+li {
+   padding-top: 1mm;
+   padding-bottom: 1mm
+}
+
+hr {color: brown;
+    height:5px;
+    background:brown;
+}
+
+.mresults{
+   color:#006200
+}
+
+.emphas{
+   color:black;
+   font-style: italic;
+}
+
+.cc{
+   color:#333399;
+   Font-Size: 13pt;
+}
+
+.ref{
+   background: #DDDDDD
+}
+
+.focus{
+   background: #EEEEDD;
+   font-weight: bold;
+   border-width: 1px;
+   border-style: solid;
+   border-color: brown;
+}
+
+.function{
+   color:#bf0000;
+   font-Size: 13pt;
+   font-weight: bold;
+   font-style: normal;
+}
+
+.matlab {
+   font-variant: small-caps;
+}

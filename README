@@ -1,0 +1,96 @@
+                      Symbolic Toolbox for Scilab
+                      ===========================
+
+Interface between Maxima (symbolic computation) and Scilab.
+
+You must have Scilab (v. >= 4.0), Perl and Maxima (v. >= 5.9.3) installed:
+Scilab: http://www.scilab.org/download/index_download.php
+Maxima: http://maxima.sourceforge.net/download.shtml
+Perl  : http://www.activestate.com/Products/ActivePerl/?mp=1
+
+Linux users: Maxima 5.9.3 Fedora rpm's can be installed on other rpm-based
+distributions and can also be converted to deb's using alien.
+
+It is also recommended to install a provisional module for overloading
+functions (see module OVLD)
+
+Version 0.0 pre1 May, 2006
+============================
+
+Jean-Francois Magni: jean-francois.magni_at_onera.fr
+
+Installation
+============
+
+    1 - Add the following line in the 'scilab.quit' file located in the
+        Scilab installation directory (path given by typing SCI in Scilab):
+           if exists('MAX'); killserver(%t); end;
+        If you don't have write access to this file, you must type 'killserver'
+        each time before leaving Scilab.
+
+    2 - From the 'file' menu of a Scilab window, navigate to the directory
+        'SYM' where the symbolic toolbox was unzipped and execute 'builder.sce',
+        then, 'loader.sce'.
+
+    3 - Install the module for overloading functions: From the 'file' menu
+        of a Scilab window, navigate to the directory 'OVLD' where this module
+        was unzipped and execute 'builder.sce' and then, 'loader.sce'
+        (see also the 'readme.txt' file of this module).
+
+    4 - From Scilab, invoke the function 'restartserver'. Note that this function
+        will kill all already running Maxima tasks.
+
+    5 - Feature not well tested:
+           On Linux i386 set INTERFACE = 'lin86'
+           On Solaris Sparc set INTERFACE = 'sparc'
+        It will replace a Perl script by a compiled program -> divide CPU
+        time by two. Set INTERFACE = 'perl' to go back to the original
+        setting.
+
+Getting started
+===============
+
+type 'hlp symbolic' for the list of available functions
+type 'hlp <name_of_function>' for on-line help
+open the tutorial: <PATH>/doc/index.html
+
+Contents
+========
+README             : this file
+LICENSE            : license agreement and disclaimer
+HISTORY            : history of updates
+
+builder.sce        : installation script
+loader.sce         : script for loading SYM functions
+
+macros/            : directory of Scilab functions
+     *.sci         : source versions
+     *.bin         : precompiled binary versions (generated)
+     names         : table of functions (generated)
+     lib           : scilab library binary save (generated)
+
+macros/percent     : sub-directory of overloaded Scilab functions
+     *.sci         : source versions
+     *.bin         : precompiled binary versions (generated)
+     names         : table of functions (generated)
+     lib           : scilab library binary save (generated)
+
+man/               : not yet available
+
+examples/          : not yet available.
+
+doc/               : tutorial
+    index.html     : main file of the tutorial
+
+server/            : directory containing utilities for communication with Maxima
+    serveur        : server listening Maxima on port 2001 and 'interface' on port 2000
+    server.sce     : Scilab script initializing 'serveur' and Maxima
+    pk.exe         : Program killer, see http://www.white-scorpion.nl/programs/programs.html
+    maxconf.lisp   : Initialization of variables in Maxima
+    lin86/interface   : compiled interface between Scilab and the server
+    sparc/interface   : compiled interface between Scilab and the server
+    win32/interface   : empty
+    perl/interface    : default interface between Scilab and the server
+    src/interface.c   : interface program that you may want to compile. Put the resulting binary
+                        in 'server/myos' (for example) and set INTERFACE = 'myos' in Scilab.
+

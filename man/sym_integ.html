@@ -1,0 +1,51 @@
+<html><head>
+<title>SymT function: %sym_integ</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Intergrates a symbolic expression using the Maxima function integrate.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[B] = <font color="green"><tt>integ</tt></font>(A,xx[,x_min,x_max])</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>A</tt></font></b>&nbsp;: &nbsp;
+Symbolic expression.</li>
+<li><b><font color="green"><tt>xx</tt></font></b>&nbsp;: &nbsp;
+Symbolic atom appearing in <font color="green"><tt>A</tt></font>: integration <font color="green"><tt>w</tt></font>.r.<font color="green"><tt>t</tt></font>. <font color="green"><tt>xx</tt></font></li>
+<li><b><font color="green"><tt><font color="green"><tt>x_min</tt></font></tt></font></b>&nbsp;: &nbsp;
+Lower bound for integration.</li>
+<li><b><font color="green"><tt><font color="green"><tt>x_max</tt></font></tt></font></b>&nbsp;: &nbsp;
+Upper bound for integration.
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>B</tt></font></b>&nbsp;: &nbsp;
+Symbolic expression.
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="sym_diff.html"><font color="green"><tt>sym/diff</tt></font></a>, <a href="sym_limit.html"><font color="green"><tt>sym/limit</tt></font></a>, <a href="sym_taylor.html"><font color="green"><tt>sym/taylor</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLE</u>
+    syms a b
+    P=[a a^2;b 3];
+    integ(P,a)
+</pre></font>
+</body>
+</html>

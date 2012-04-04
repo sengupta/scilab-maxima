@@ -1,0 +1,60 @@
+
+abs 	Modulus
+bfloat 	High precision symbolic floating point evaluation
+coeffs	Coefficients of a polynomial
+colspace	Column span
+conj 	Conjugate-transpose
+dbl 	Numerical floating point evaluation
+degrees	Partial degrees of a polynomial
+det	Determinant
+diag	Extracts diagonal or creates diagonal matrix
+diff	Differentiation
+eig	Computes eigenvalues/eigenvectors
+eval 	Evaluation considering values in workspace
+exp 	Exponential
+expand	Expansion
+factor	Factorization
+findpid 	Finds task PIDs (Unix)
+findsym	Retrieves symbolic atoms from an expression
+float 	Symbolic floating point evaluation
+fortran 	Symbolic expression in Fortran format
+gcd	Greatest common divisor
+hlp 	Help for Scilab functions
+horner	Horner form of a polynomial
+ilaplace	Inverse Laplace transform
+imag 	Imaginary part
+integ	Integration
+inv	Matrix inverse
+killserver 	Must be invoked before shuting down Scilab
+laplace	Laplace transform
+latex 	Symbolic expression in LaTeX forma (amsmath)
+lcm	Least common multiple
+limit	Limit
+log 	Natural logarithm
+maxima 	Invokes a Maxima function and retrieves result in Scilab
+mclear 	Clears declarations in Maxima workspace
+mexec 	Executes a Maxima command only in Maxima workspace
+mhlp 	Displays Maxima help in Scilab
+minfo 	Displays Maxima version and paths
+null	Null space
+numden	Numerator and denominator
+rank	Rank
+real 	Real part
+restartserver 	Reinitialize Maxima workspace and server
+rref	Row echelon form of a matrix
+simple	Some kind of simplification
+size	Size
+sqrt 	Square root
+str2max2sym 	Function which controls communication Scilab / Maxima
+subs 	Substitutions
+sym	Generation of sym-objects and conversions
+symbolic 	List of functions of the toolbox
+syml	Generation of syml-objects (Maxima symbolic lists)
+syms	Generation of 1-by-1 real sym-objects
+symsum	Sums and limits of series
+symtype	Returns symbolic type (odd, even,... real, complex)
+taylor	Taylor expansion
+trace	Computes the trace
+tril	Lower triangular form
+triu	Upper triangular form
+typ 	Types function files in a command window

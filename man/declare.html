@@ -1,0 +1,40 @@
+<html><head>
+<title>SymT function: declare</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Declare types of atoms in Maxima workspace. This function is invoked by other functions of the toolbox.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt><font color="green"><tt>declare</tt></font>(aa,bb,string,nn,string,cc,string,...)</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>aa, <font color="green"><tt>bb</tt></font>, <font color="green"><tt>cc</tt></font>, nn</tt></font></b>&nbsp;: &nbsp;
+Symbolic ATOMS</li>
+<li><b><font color="green"><tt>string</tt></font></b>&nbsp;: &nbsp;
+Strings = even, odd, integer, rational, irrational,
+real, imaginary or complex
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="syms.html"><font color="green"><tt>syms</tt></font></a>, <a href="symtype.html"><font color="green"><tt>symtype</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLES</u>
+    syms a b c d
+    declare a b 'real' c d 'imaginary'
+    symtype(a)
+    symtype(d)
+</pre></font>
+</body>
+</html>

@@ -1,0 +1,19 @@
+#!/usr/local/bin/perl
+
+use IO::Socket;
+
+$socket1 = IO::Socket::INET->new(
+        Type  => SOCK_STREAM,
+        PeerAddr => "localhost",
+        Proto => "tcp",
+        PeerPort => 2000
+        ) or die "Cannot open socket on port 2000.\n";
+
+# Envoi sur <server1> de l'argument
+print $socket1 (shift)."\n\n"; # blank line for informing the server
+                               # that the transfer from socket is finished
+
+# Réponse de <server1>
+$ligne = <$socket1>;
+print $ligne;
+

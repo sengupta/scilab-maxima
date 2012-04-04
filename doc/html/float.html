@@ -1,0 +1,54 @@
+<html><head>
+<title>SymT function: float</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: float</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>Converts integers, rational numbers and bigfloats in input argument to floating point numbers.</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[bb] = <tt class="function">float</tt>(aa)</tt></li>
+</ul>
+
+<p><b>Input arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>aa</tt></td>
+<td class="args" width="80%">Symbolic expression or expression which can be converted
+into a symbolic expression (<i>e.g.,</i> a string) before its
+numerical evaluation is returned in <tt>b</tt>.
+</td></tr>
+</table></p>
+
+<p><b>Output arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>bb</tt></td>
+<td class="args" width="80%">Symbolic expression or symbolic number
+</td></tr>
+</table></p>
+
+<p><b>See also</b>: <a href="bfloat.html"><tt class="function">bfloat</tt></a>, <a href="sym_dbl.html"><tt class="function">sym/dbl</tt></a>.</p><p><hr></p>
+
+<pre>
+EXAMPLES:
+    syms b
+    %pi*b
+    float(%pi*b)
+
+    float('(1/3)*a')
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>

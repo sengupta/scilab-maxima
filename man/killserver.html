@@ -1,0 +1,41 @@
+<html><head>
+<title>SymT function: killserver</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Kill all <font color="green"><tt>maxima</tt></font> tasks and the server lauched for communication between Maxima and Scilab.<b> this function must be invoked manually before shuting down scilab</b>. For re-initialization of Maxima invoke the function <font color="green"><tt>restartserver</tt></font>.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt><font color="green"><tt>killserver</tt></font>(boolean)</tt></font></b></li>
+</ul>
+<br>
+
+<br><font color="blue"><b>Caution</b></font><br>
+
+<br>Windows: For killing tasks, we use ProKill <font color="green"><tt>v2</tt></font>.<font color="green"><tt>1</tt></font> (pk.exe). All
+tasks named perl.exe or maxima.exe will be killed, so be careful.
+<br>See: http://www.white-scorpion.nl/programs/programs.html.
+<br><br>
+If you forgot to invoke <font color="green"><tt>killserver</tt></font> before shuting down Scilab,
+next time you launch Scilab, invoke the function <font color="green"><tt>restartserver</tt></font>
+before you invoke any function of the symbolic toolbox.
+<br><br>
+
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>boolean</tt></font></b>&nbsp;: &nbsp;
+If <font color="green"><tt>boolean</tt></font> = %t no comments are displayed. Default
+<font color="green"><tt>boolean</tt></font> = %f.
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="restartserver.html"><font color="green"><tt>restartserver</tt></font></a>, <a href="findpid.html"><font color="green"><tt>findpid</tt></font></a>.<br></body>
+</html>

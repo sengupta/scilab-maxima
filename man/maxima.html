@@ -1,0 +1,74 @@
+<html><head>
+<title>SymT function: maxima</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Execute a <font color="green"><tt>function</tt></font> with several arguments in Maxima and retrieve result.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[sym] = <font color="green"><tt>maxima</tt></font>(function,arg1,arg2,...)</tt></font></b></li>
+</ul>
+<br>
+
+<br><font color="blue"><b>Description</b></font><br>
+
+<br>Use restricted to Maxima functions returning a single symbolic
+object, otherwise a string is returned instead of a <font color="green"><tt><font color="green"><tt>sym</tt></font></tt></font>-object.
+Type '<font color="green"><tt>mhlp</tt></font> <<font color="green"><tt>name_of_maxima_function</tt></font>>' for a description of the
+Maxima <font color="green"><tt>function</tt></font>.
+<br><br>
+Note that, when the result is not as expected, the <font color="green"><tt>function</tt></font>
+<font color="green"><tt><font color="green"><tt>str2max</tt></font><font color="green"><tt>2sym</tt></font></tt></font> invoked with option <font color="green"><tt>'vec'</tt></font> might be complementary
+for understanding the problem. In case of unrecoverable problem
+invoke the <font color="green"><tt>function</tt></font> <font color="green"><tt>restartserver</tt></font> in order to re-initialize
+Maxima.
+<br><br>
+
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>function</tt></font></b>&nbsp;: &nbsp;
+String: name of a Maxima <font color="green"><tt>function</tt></font></li>
+<li><b><font color="green"><tt><font color="green"><tt>arg1</tt></font>, <font color="green"><tt>arg2</tt></font></tt></font></b>&nbsp;: &nbsp;
+Strings, <font color="green"><tt><font color="green"><tt>sym</tt></font></tt></font>-objects or <font color="green"><tt>syml</tt></font>-objects: arguments of the
+Maxima <font color="green"><tt>function</tt></font>. Note that <font color="green"><tt>syml</tt></font>-objects have been
+implemented specifically for the <font color="green"><tt>function</tt></font> '<font color="green"><tt>maxima</tt></font>' as
+some Maxima functions require input arguments defined
+as lists rather than matrices.
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt><font color="green"><tt>sym</tt></font></tt></font></b>&nbsp;: &nbsp;
+Symbolic object.
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="str2max2sym.html"><font color="green"><tt>str2max2sym</tt></font></a>, <a href="mexec.html"><font color="green"><tt>mexec</tt></font></a>, <a href="mhlp.html"><font color="green"><tt>mhlp</tt></font></a>, <a href="syml.html"><font color="green"><tt>syml</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLES</u>
+   x = maxima('factorsum','a*x*z+a*z+a*w*x+v*x+u*x+a*w+v+u')
+
+   p1=sym('-a*b^2-3*b^2+a^2*b+3*a*b+3*b+a^2+a');
+   p2=sym('-a*b^3-3*b^3-a*b^2+a^3*b+3*a^2*b+a*b+3*b+a^3+a');
+   maxima('gcd',p1,p2)
+
+   p=sym('a^2*b^2-3+a*b*(a-b)*b^6');
+   maxima('scsimp',p,'a=b')
+
+   p=maxima('solve',syml(['a*x+b*y=3','a*x*y = 2']),syml(['x','y']))
+   p.x
+</pre></font>
+</body>
+</html>

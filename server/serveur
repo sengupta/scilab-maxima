@@ -1,0 +1,113 @@
+#!/usr/local/bin/perl -w
+
+############################################################################
+# The "interface" uses port 2000 (server1)
+# Maxima must be connected as client on port 2001 (server2)
+# Maxima must be launched with
+#      maxima -s 2001 --preload-lisp=maxconf.lisp &
+#
+# The Scilab script SYM/loader.sce launches the server and Maxima
+#
+# The server and Maxima can be reinitialized by calling the function
+# 'killserver' from Scilab and then exec(SYM+'serveur.sce');
+#
+# For debug, uncomment the lines 'print "debug -> $ligne";' of this
+# script and launch Scilab from a command tool.
+#
+# rep = unix_g(SYMDIR+'interface ''instruction_maxima;''')
+############################################################################
+
+use IO::Socket;
+
+############################################################################
+# Opening servers
+$server1 = IO::Socket::INET->new(
+   LocalPort => 2000,
+   Type      => SOCK_STREAM,
+   Reuse     => 1,
+   Listen    => 5
+   ) or die "\nCreation du serveur sur port 2000 impossible.\n";
+print "\nServeur sur port 2000: OK\n";
+
+$server2 = IO::Socket::INET->new(
+   LocalPort => 2001,
+   Type      => SOCK_STREAM,
+   Reuse     => 1,
+   Listen    => 5
+   ) or die "Creation du serveur sur port 2001 impossible.\n";
+print "Serveur sur port 2001: OK\n";
+
+############################################################################
+# Detection of Maxima
+$client_maxima = $server2->accept();
+while ($ligne = <$client_maxima>) {
+   if ($ligne =~/<END_OF_OUTPUT>/) {last;}
+}
+print "==== Maxima detected ====\n";
+
+# Configuration of Maxima
+# For Maxima up to 5.9.2 comment the 'load("conjugate")$' and '&clearMaxWorkSpace' lines.
+   print $client_maxima 'display2d:false$';   # result on a single line
+   &clearMaxWorkSpace;
+   print $client_maxima 'linel:1000000$';     # result on a single line
+   &clearMaxWorkSpace;
+   print $client_maxima 'load("conjugate")$'; # Induces errors in some cases (eigenvalues...)
+   &clearMaxWorkSpace;
+   print $client_maxima 'load("eigen")$';
+   &clearMaxWorkSpace;
+   print $client_maxima 'load("ntrig")$';     # trigonometric simplifications
+   &clearMaxWorkSpace;
+   print $client_maxima 'load("atrig1")$';    # trigonometric simplifications
+   &clearMaxWorkSpace;
+   print $client_maxima 'load("linearalgebra")$';    # linear algebra: rank, nullspace....
+   &clearMaxWorkSpace;
+   print $client_maxima 'load("diag")$';      # Jordan....
+   &clearMaxWorkSpace;
+
+############################################################################
+# Conversation
+for ($i=0;$i<10000;$i++){
+
+   # Read lign from 'interface'
+   $client_interface = $server1->accept();
+   $ligne_interface = <$client_interface>;
+
+   # Add treatment below if required
+   $ligne_traitee = $ligne_interface;
+   print "===>to port 2001: $ligne_traitee"; ## LOG
+
+   # Sent to Maxima
+   print $client_maxima $ligne_traitee;
+
+   # Reading and treatment of Maxima reaction: we concatenate the lines sent
+   # by Maxima into $all_lines until the string <END_OF_OUTPUT> is encountered.
+   $all_lines = '';
+   while ($ligne = <$client_maxima>) {
+      print "debug -> $ligne";  ## DEBUG
+      $ligne =~ s/\n//g; # remove "new line"
+      $all_lines = $all_lines . $ligne . "<NEW_LINE>";
+      if ($ligne =~/<END_OF_OUTPUT>/) {last;};
+   }
+   print "<=from port 2001: $all_lines\n\n"; ## LOG
+
+   # Treatment of $all_lines
+   $all_lines =~ s/\(%[io]\d*\)[ \t]*//g;
+   $all_lines =~ s/<END_OF_OUTPUT>.*?<NEW_LINE>$//g;
+   $all_lines =~ s/(<NEW_LINE>)*$//g;
+   $all_lines =~ s/<NEW_LINE>false//g;
+   $all_lines =~ s/<NEW_LINE>done//g;
+   $all_lines =~ s/<NEW_LINE>true//g;
+
+   # Send to 'interface' via port 2001
+   print $client_interface "$all_lines\n\n"; # Blank line for end of message
+
+}
+
+############################################################################
+sub clearMaxWorkSpace {
+   # Clear Maxima replies until the string <END_OF_OUTPUT> is encountered
+   while ($ligne = <$client_maxima>) {
+         # print "debug ini -> $ligne";
+         if ($ligne =~/<END_OF_OUTPUT>/) {last;};
+   }
+}

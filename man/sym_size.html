@@ -1,0 +1,42 @@
+<html><head>
+<title>SymT function: %sym_size</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Computes the size of a <font color="green"><tt>sym</tt></font>-object<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[n1n2] = <font color="green"><tt>size</tt></font>(A)</tt></font></b></li>
+<li><b><font color="green"><tt>[n1,n2] = <font color="green"><tt>size</tt></font>(A)</tt></font></b></li>
+<li><b><font color="green"><tt>[ni] = <font color="green"><tt>size</tt></font>(A,ii)</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>A</tt></font></b>&nbsp;: &nbsp;
+Symbolic matrix</li>
+<li><b><font color="green"><tt>ii</tt></font></b>&nbsp;: &nbsp;
+integer equal to <font color="green"><tt>1</tt></font> or <font color="green"><tt>2</tt></font>
+
+</li>
+</ul><br>
+
+<hr>
+
+<font color="green"><pre>
+<u>EXAMPLE</u>
+   M = sym(['1' 'a' '2';'3' 'b' 'c'])
+   n1n2 = size(M)
+   [n1,n2] = size(M)
+   size(M,1)
+   size(M,2)
+</pre></font>
+</body>
+</html>

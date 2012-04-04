@@ -1,0 +1,38 @@
+<html><head>
+<title>SymT function: %sym_real</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Real part of a symbolic object depending on <b>real</b> parameters<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[b] = <font color="green"><tt>real</tt></font>(a)</tt></font></b></li>
+</ul>
+<br>
+
+<br><font color="blue"><b>Description</b></font><br>
+
+<br>Note that symbolic variables are assumed to be complex or real
+depending on the version of Maxima (real version <font color="green"><tt>5</tt></font>.<font color="green"><tt>9</tt></font>.<font color="green"><tt>1</tt></font>, complex
+for version <font color="green"><tt>5</tt></font>.<font color="green"><tt>9</tt></font>.<font color="green"><tt>2</tt></font> or higher). If you intend to use the functions
+real, imag, conj or abs, it is better to <font color="green"><tt>declare</tt></font> the type of
+atoms when they are defined (see example below).
+<br><br>
+
+
+<br><font color="blue"><b>See also</b></font>: <a href="sym_imag.html"><font color="green"><tt>sym/imag</tt></font></a>, <a href="sym_conj.html"><font color="green"><tt>sym/conj</tt></font></a>, <a href="sym_abs.html"><font color="green"><tt>sym/abs</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLE</u>
+    syms a b 'real'
+    c = (a+%i*b)^3
+    real(c)
+    imag(c)
+</pre></font>
+</body>
+</html>

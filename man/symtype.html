@@ -1,0 +1,47 @@
+<html><head>
+<title>SymT function: symtype</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Retrieves the type of a symbolic variables from Maxima workspace within the following list: even, odd, integer, rational, irrational, real, imaginary, complex.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[tp] = <font color="green"><tt>symtype</tt></font>(aa)</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>aa</tt></font></b>&nbsp;: &nbsp;
+Symbolic ATOM defined in the Scilab workspace. By
+default, <font color="green"><tt>aa</tt></font> is assumed to be real.
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>tp</tt></font></b>&nbsp;: &nbsp;
+Maxima type of the symbolic object <font color="green"><tt>aa</tt></font>..
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="declare.html"><font color="green"><tt>declare</tt></font></a>, <a href="syms.html"><font color="green"><tt>syms</tt></font></a>, <a href="sym.html"><font color="green"><tt>sym</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLES</u>
+    syms a b c d
+    declare a b 'real' c d 'imaginary'
+    symtype(a)
+    symtype(d)
+</pre></font>
+</body>
+</html>

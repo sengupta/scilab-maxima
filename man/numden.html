@@ -1,0 +1,47 @@
+<html><head>
+<title>SymT function: numden</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Retrieves numerators and denominators of a rational symbolic matrix using the Maxima functions matrixmap, ratnumer and ratdenom.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[num,den] = <font color="green"><tt>numden</tt></font>(A)</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>A</tt></font></b>&nbsp;: &nbsp;
+Rational symbolic expression
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>num</tt></font></b>&nbsp;: &nbsp;
+Symbolic expression</li>
+<li><b><font color="green"><tt>den</tt></font></b>&nbsp;: &nbsp;
+Symbolic expression
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="coeffs.html"><font color="green"><tt>coeffs</tt></font></a>, <a href="degrees.html"><font color="green"><tt>degrees</tt></font></a>, <a href="findsym.html"><font color="green"><tt>findsym</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLE</u>
+   syms a b
+   M = [2*a/(1+b) 0;1 a/b];
+   [num,den] = numden(M)
+</pre></font>
+</body>
+</html>

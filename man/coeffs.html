@@ -1,0 +1,54 @@
+<html><head>
+<title>SymT function: coeffs</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Retrieves polynomial coefficients using the Maxima function ratcoeff.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[cof] = <font color="green"><tt>coeffs</tt></font>(A,x[,n])</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>A</tt></font></b>&nbsp;: &nbsp;
+Polynomial symbolic expression. Don't use with rational
+expressions.</li>
+<li><b><font color="green"><tt>x</tt></font></b>&nbsp;: &nbsp;
+Symbolic atom appearing in <font color="green"><tt>A</tt></font>.</li>
+<li><b><font color="green"><tt>n</tt></font></b>&nbsp;: &nbsp;
+Integer, power of <font color="green"><tt>x</tt></font> in <font color="green"><tt>A</tt></font>. By default <font color="green"><tt>n</tt></font> = <font color="green"><tt>1</tt></font>
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>cof</tt></font></b>&nbsp;: &nbsp;
+Symbolic expression: coefficient of <font color="green"><tt>x</tt></font>^<font color="green"><tt>n</tt></font> in <font color="green"><tt>A</tt></font>
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="numden.html"><font color="green"><tt>numden</tt></font></a>, <a href="degrees.html"><font color="green"><tt>degrees</tt></font></a>, <a href="findsym.html"><font color="green"><tt>findsym</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLES</u>
+    P = sym('(a+b+c)^3-(a+b+c)^2');
+    simple(P,'a')
+
+    cof_a_0 = coeffs(P,'a',0)
+    cof_a_1 = coeffs(P,'a',1)
+    cof_a_2 = coeffs(P,'a',2)
+    cof_a_3 = coeffs(P,'a',3)
+</pre></font>
+</body>
+</html>

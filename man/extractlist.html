@@ -1,0 +1,72 @@
+<html><head>
+<title>SymT function: extractlist</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>This function extracts symbolic objects from some kinds of strings returned by Maxima. It is a sub-function of the function <font color="green"><tt>maxima</tt></font> so, can be ignored by the user.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[lists] = <font color="green"><tt>extractlist</tt></font>(str)</tt></font></b></li>
+</ul>
+<br>
+
+<br><font color="blue"><b>Description</b></font><br>
+
+<br>The kind of strings supported by this function consists of substrings limited by square brackets. In each sub-string an equality is expected. Example of supported strings:
+<br><br>
+[[<font color="green"><tt>x</tt></font> = <font color="green"><tt>s_</tt></font><font color="green"><tt>x1</tt></font>,<font color="green"><tt>y</tt></font> = <font color="green"><tt>s_</tt></font><font color="green"><tt>y1</tt></font>,<font color="green"><tt>z</tt></font> = <font color="green"><tt>s_</tt></font><font color="green"><tt>z1</tt></font>],[<font color="green"><tt>x</tt></font> = <font color="green"><tt>s_</tt></font><font color="green"><tt>x2</tt></font>,<font color="green"><tt>y</tt></font> = <font color="green"><tt>s_</tt></font><font color="green"><tt>y2</tt></font>, <font color="green"><tt>z</tt></font> = <font color="green"><tt>s_</tt></font><font color="green"><tt>z2</tt></font>]]
+<br><br>
+This function returns a structured array of the form:
+<br><br>
+<font color="green"><tt>lists</tt></font>.x(<font color="green"><tt>1</tt></font>) = <font color="green"><tt>s_</tt></font><font color="green"><tt>x1</tt></font>; <font color="green"><tt>lists</tt></font>.x(<font color="green"><tt>2</tt></font>) = <font color="green"><tt>s_</tt></font><font color="green"><tt>x2</tt></font>;
+<br><br>
+<font color="green"><tt>lists</tt></font>.y(<font color="green"><tt>1</tt></font>) = <font color="green"><tt>s_</tt></font><font color="green"><tt>y1</tt></font>; <font color="green"><tt>lists</tt></font>.y(<font color="green"><tt>2</tt></font>) = <font color="green"><tt>s_</tt></font><font color="green"><tt>y2</tt></font>;
+<br><br>
+<font color="green"><tt>lists</tt></font>.z(<font color="green"><tt>1</tt></font>) = <font color="green"><tt>s_</tt></font><font color="green"><tt>z1</tt></font>; <font color="green"><tt>lists</tt></font>.z(<font color="green"><tt>2</tt></font>) = <font color="green"><tt>s_</tt></font><font color="green"><tt>z2</tt></font>;
+<br><br>
+in which <font color="green"><tt>s_</tt></font><font color="green"><tt>x1</tt></font>, <font color="green"><tt>s_</tt></font><font color="green"><tt>y1</tt></font>,... are symbolic objects.
+<br><br>
+
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>str</tt></font></b>&nbsp;: &nbsp;
+String returned by some Maxima functions (see the above
+example).
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>lists</tt></font></b>&nbsp;: &nbsp;
+Structured array containing symbolic objects. The field
+names of this structured array are the expected variable
+names (see the above example).
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="maxima.html"><font color="green"><tt>maxima</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLES</u>
+   sym1 = maxima('solve','a*x^2-x+3=0','x');
+   sym1.x
+
+   equs = syml(['a*x+2*y-5*z=a','x^2=4','a*x+b*y=5']);
+   unkn = syml(['x','y','z']);
+   sym2 = maxima('solve',equs,unkn);
+   sym2.x
+   sym2.y
+   sym2.z
+</pre></font>
+</body>
+</html>

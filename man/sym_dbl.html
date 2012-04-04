@@ -1,0 +1,45 @@
+<html><head>
+<title>SymT function: %sym_dbl</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Converts symbolic numbers to floating point numbers. Note that in some cases this function looks similar to eval but the output of eval is a symbolic object (possibly symbolic number).<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[bb] = <font color="green"><tt>dbl</tt></font>(aa)</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>aa</tt></font></b>&nbsp;: &nbsp;
+Symbolic expression containing no symbolic atoms.
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>bb</tt></font></b>&nbsp;: &nbsp;
+Scalar or matrix of floating point numbers
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="bfloat.html"><font color="green"><tt>bfloat</tt></font></a>, <a href="float.html"><font color="green"><tt>float</tt></font></a>, <a href="sym_eval.html"><font color="green"><tt>sym/eval</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLE:</u>
+    a = log(sym('3'))
+    float(a)        // Symbolic floating point number
+    dbl(a)          // Numerical floating point number (indented)
+</pre></font>
+</body>
+</html>

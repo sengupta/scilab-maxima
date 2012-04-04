@@ -1,0 +1,46 @@
+<html><head>
+<title>SymT function: latex</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Transforms a symbolic expression to a string compatible with LaTeX.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[str] = <font color="green"><tt>latex</tt></font>(expr)</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>expr</tt></font></b>&nbsp;: &nbsp;
+Symbolic expression.
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>str</tt></font></b>&nbsp;: &nbsp;
+LaTeX string corresponding to '<font color="green"><tt>expr</tt></font>' compatible with
+amsmath style.
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="fortran.html"><font color="green"><tt>fortran</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLE</u>
+    syms a b c d
+    M = [a^5*b 4;a*b*c^3*d a*d]
+    latex(M)
+</pre></font>
+</body>
+</html>

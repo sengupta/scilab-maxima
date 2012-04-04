@@ -1,0 +1,48 @@
+<html><head>
+<title>SymT function: %sym_horner</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Factorization of rational expressions using the Maxima function horner.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[B] = <font color="green"><tt>horner</tt></font>(A[,xx])</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>A</tt></font></b>&nbsp;: &nbsp;
+Rational symbolic expression</li>
+<li><b><font color="green"><tt>xx</tt></font></b>&nbsp;: &nbsp;
+Symbolic atom appearing in <font color="green"><tt>A</tt></font> selected for factorisations.
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>B</tt></font></b>&nbsp;: &nbsp;
+Symbolic expression in horner form.
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="sym_expand.html"><font color="green"><tt>sym/expand</tt></font></a>, <a href="sym_factor.html"><font color="green"><tt>sym/factor</tt></font></a>, <a href="sym_simple.html"><font color="green"><tt>sym/simple</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLE</u>
+    A = sym('((a^2+b+c)^2-(a+b+c))/(a^2-b^2)^2');
+    A = expand(A)
+    B = horner(A,'a')
+    B = horner(A,'b')
+</pre></font>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<html><head>
+<title>SymT function: findsym</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Extracts the symbolic atoms from a symbolic expression using the Maxima function listofvars.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[vars] = <font color="green"><tt>findsym</tt></font>(expr)</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>expr</tt></font></b>&nbsp;: &nbsp;
+Symbolic expression
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>vars</tt></font></b>&nbsp;: &nbsp;
+Symbolic vector.
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="numden.html"><font color="green"><tt>numden</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLE</u>
+    syms a b c d
+    M = [a^5*b 4;a*b*c^3*d a*d]
+    findsym(M)
+</pre></font>
+</body>
+</html>

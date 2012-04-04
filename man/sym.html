@@ -1,0 +1,92 @@
+<html><head>
+<title>SymT function: sym</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Main function of the symbolic toolbox for defining symbolic objects (<font color="green"><tt>sym</tt></font>-objects)<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[a_sym] = <font color="green"><tt>sym</tt></font>(a_str[,type])</tt></font></b></li>
+</ul>
+<br>
+
+<br><font color="blue"><b>Description</b></font><br>
+
+<br>Main function of the symbolic toolbox as it returns a symbolic
+object (<font color="green"><tt>sym</tt></font>-object) from an argument of <font color="green"><tt>type</tt></font>
+<br><br>
+- constant,
+<br><br>
+- string,
+<br><br>
+- polynomial,
+<br><br>
+- rational,
+<br><br>
+- list,
+<br><br>
+- (symbolic)
+<br><br>
+A <font color="green"><tt>sym</tt></font>-object <font color="green"><tt>X</tt></font> is an mlist containing a string compatible with
+Maxima : <font color="green"><tt>X</tt></font>.<font color="green"><tt>str1</tt></font>. In future versions additional strings might be
+considered.
+<br><br>
+
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt><font color="green"><tt>a_str</tt></font></tt></font></b>&nbsp;: &nbsp;
+String defining a symbolic atom or a combination of
+symbolic atoms (see example below). <font color="green"><tt><font color="green"><tt>a_str</tt></font></tt></font> can also be
+a constant, polynomial, rational, symbolic or a list
+object, in this case it is converted to a <font color="green"><tt>sym</tt></font>-object.</li>
+<li><b><font color="green"><tt>type</tt></font></b>&nbsp;: &nbsp;
+String defining the <font color="green"><tt>type</tt></font> of all atoms involved in
+<font color="green"><tt><font color="green"><tt>a_str</tt></font></tt></font>. Supported types are: even, odd, integer,
+rational, irrational, real, imaginary or complex.
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt><font color="green"><tt>a_sym</tt></font></tt></font></b>&nbsp;: &nbsp;
+Symbolic object.
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="syms.html"><font color="green"><tt>syms</tt></font></a>, <a href="symtype.html"><font color="green"><tt>symtype</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLES</u>
+   a = sym('a'); b = sym('b');
+   Y = [a^2-3*b a*b*5];
+   Y.str1
+
+   a = sym('a','odd');
+   symtype(a)
+
+   X = sym(['a+b*2+3*a' 'cos(c)';'1/(3*a-sin(c))' '3'])
+   X.str1
+
+   Z = sym('x^2+y^3+z','imaginary');
+   real(Z)
+   symtype('z') // string 'z' because the atom z is not in Scilab workspace
+
+   M=[0.33333333333 0.8585858585;0.121212121212 0.22222222222];
+   sym(M)
+
+   syms a
+   0.3333333333*a
+   '0.3333333333'*a
+</pre></font>
+</body>
+</html>

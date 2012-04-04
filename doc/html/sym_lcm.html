@@ -1,0 +1,53 @@
+<html><head>
+<title>SymT function: %sym_lcm</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: %sym_lcm</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>Computes the least common multiple of two polynomials.</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[ll] = <tt class="function">lcm</tt>(aa,bb)</tt></li>
+</ul>
+
+<p><b>Input arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>aa</tt></td>
+<td class="args" width="80%">Symbolic polynomial</td></tr>
+<tr><td class="args"><tt>bb</tt></td>
+<td class="args">Symbolic polynomial
+</td></tr>
+</table></p>
+
+<p><b>Output arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>ll</tt></td>
+<td class="args" width="80%">Least common multiple symbolic polynomial
+</td></tr>
+</table></p>
+
+<p><b>See also</b>: <a href="sym_gcd.html"><tt class="function">sym/gcd</tt></a>.</p><p><hr></p>
+
+<pre>
+<u>EXAMPLE</u>
+    syms x y
+    p1 = y^3+x;
+    p2 = x^5+x^3+4*x^2+4;
+    l = lcm(p1,p2)
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>

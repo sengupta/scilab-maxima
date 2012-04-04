@@ -1,0 +1,47 @@
+<html><head>
+<title>SymT function: %sym_null</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Null space of a symbolic matrix using the Maxima function nullspace.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[X,warn] = <font color="green"><tt>null</tt></font>(A)</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>A</tt></font></b>&nbsp;: &nbsp;
+Symbolic matrix
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>X</tt></font></b>&nbsp;: &nbsp;
+Symbolic matrix</li>
+<li><b><font color="green"><tt>warn</tt></font></b>&nbsp;: &nbsp;
+String giving restrictions on null space validity.
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="sym_rank.html"><font color="green"><tt>sym/rank</tt></font></a>, <a href="sym_colspace.html"><font color="green"><tt>sym/colspace</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLES</u>
+   syms a b
+   M = [a 2*a 3*a;b 2*b 3*b];
+   [X,warn] = null(M)
+</pre></font>
+</body>
+</html>

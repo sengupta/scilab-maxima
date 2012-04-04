@@ -1,0 +1,74 @@
+<html><head>
+<title>SymT function: subs</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: subs</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>Substitution based on the Maxima function <tt>'subst'</tt>.</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[expr2] = <tt class="function">subs</tt>(expr1,old,new)</tt></li>
+</ul>
+
+<p><b>Description</b></p>
+
+Similar to <tt class="function">sym/eval</tt> but here, workspace values are ignored.
+<p><b>Input arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt><tt>expr1</tt></tt></td>
+<td class="args" width="80%">Symbolic expression in which '<tt>new</tt>' will be substituted
+for '<tt>old</tt>'.</td></tr>
+<tr><td class="args"><tt>old</tt></td>
+<td class="args">Symbolic atom or vector of atoms to be substituded.
+Atoms can also be replaced by sub-expressions appearing
+explicitely in <tt><tt>expr1</tt></tt>. See illutrative examples.</td></tr>
+<tr><td class="args"><tt>new</tt></td>
+<td class="args">Symbolic expression or vector of expressions of same
+length as '<tt>old</tt>'. Substitution is performed sequentially,
+<tt>old</tt>(<tt>1</tt>) replaced by <tt>new</tt>(<tt>1</tt>) then <tt>old</tt>(<tt>2</tt>) replaced by <tt>new</tt>(<tt>2</tt>)
+and so on. See illutrative examples.
+</td></tr>
+</table></p>
+
+<p><b>Output arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt><tt>expr2</tt></tt></td>
+<td class="args" width="80%">Resulting symbolic expression after substitution.
+</td></tr>
+</table></p>
+
+<p><b>See also</b>: <a href="sym_eval.html"><tt class="function">sym/eval</tt></a>.</p><p><hr></p>
+
+<pre>
+<u>EXAMPLES</u>
+    syms a b c x 'real'
+    c1 = (a+%i*b)^2;
+    c2 = subs(c1,a,c-%i*b)
+
+    c3 = cos(a) + b*sin(c);
+    c4 = subs(c3,[a b],[2*c c^2])
+
+ <u>Substitutions performed sequencially !</u>
+    c5 = subs(c3,[a b x],[x a b]) // a->x then b->a then x->b
+    subs(c3,[a b],[b a])          // a->b then b->a
+
+ <u>Substitution of sub-expressions</u>
+    c6 = subs(c1,a+%i*b,3)
+    subs(expand(c1),a+%i*b,3)  // doesn't work after expansion
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<html><head>
+<title>SymT function: mexec</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Executes a string in Maxima and retrieves Maxima response as a string. For retrieving a symbolic object from Maxima workspace use preferably the function '<font color="green"><tt>maxima</tt></font>'.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[resp] = <font color="green"><tt>mexec</tt></font>(str1[,flag])</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt><font color="green"><tt>str1</tt></font></tt></font></b>&nbsp;: &nbsp;
+String in Maxima syntax like 'conjugate(a+%i*<font color="green"><tt>b</tt></font>)'</li>
+<li><b><font color="green"><tt>flag</tt></font></b>&nbsp;: &nbsp;
+String equal to <font color="green"><tt>'str'</tt></font> or <font color="green"><tt>'vec'</tt></font>(default: <font color="green"><tt>flag</tt></font> = <font color="green"><tt>'vec'</tt></font>).
+This <font color="green"><tt>flag</tt></font> sets the type of the output argument as:
+
+- case <font color="green"><tt>'str'</tt></font> -> concatenated string
+
+- case <font color="green"><tt>'vec'</tt></font> -> vector of strings
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>resp</tt></font></b>&nbsp;: &nbsp;
+String.
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="maxima.html"><font color="green"><tt>maxima</tt></font></a>, <a href="str2max2sym.html"><font color="green"><tt>str2max2sym</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLE</u>
+   resp = mexec('%pi-b$ cos(%)')
+   mexec('load(ntrig)')
+</pre></font>
+</body>
+</html>

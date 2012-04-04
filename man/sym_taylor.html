@@ -1,0 +1,53 @@
+<html><head>
+<title>SymT function: %sym_taylor</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Taylor expansion<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[sym1] = <font color="green"><tt>taylor</tt></font>(A,xx,x0,pow)</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>A</tt></font></b>&nbsp;: &nbsp;
+Symbolic expression.</li>
+<li><b><font color="green"><tt>xx</tt></font></b>&nbsp;: &nbsp;
+Taylor expansion <font color="green"><tt>w</tt></font>.r.<font color="green"><tt>t</tt></font>. symbolic variable.</li>
+<li><b><font color="green"><tt><font color="green"><tt>x0</tt></font></tt></font></b>&nbsp;: &nbsp;
+Constant: value of <font color="green"><tt>xx</tt></font> where is considered the expansion</li>
+<li><b><font color="green"><tt>pow</tt></font></b>&nbsp;: &nbsp;
+Integer: power of the expansion
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt><font color="green"><tt>sym1</tt></font></tt></font></b>&nbsp;: &nbsp;
+Symbolic expression of the Taylor expansion.
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="sym_diff.html"><font color="green"><tt>sym/diff</tt></font></a>, <a href="sym_integ.html"><font color="green"><tt>sym/integ</tt></font></a>, <a href="sym_limit.html"><font color="green"><tt>sym/limit</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLES</u>
+    syms a
+    taylor(cos(a),a,0,4)
+
+    M = sym(['a^3*b';'(1-a^2)'])
+    taylor(M,a,3,2)
+</pre></font>
+</body>
+</html>

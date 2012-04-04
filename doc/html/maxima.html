@@ -1,0 +1,76 @@
+<html><head>
+<title>SymT function: maxima</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: maxima</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>Execute a <tt>function</tt> with several arguments in Maxima and retrieve result.</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[sym] = <tt class="function">maxima</tt>(function,arg1,arg2,...)</tt></li>
+</ul>
+
+<p><b>Description</b></p>
+
+Use restricted to Maxima functions returning a single symbolic
+object, otherwise a string is returned instead of a <tt><tt class="function">sym</tt></tt>-object.
+Type '<tt class="function">mhlp</tt> <<tt>name_of_maxima_function</tt>>' for a description of the
+Maxima <tt>function</tt>.
+<br><br>
+Note that, when the result is not as expected, the <tt>function</tt>
+<tt class="function"><tt>str2max</tt><tt>2sym</tt></tt> invoked with option <tt>'vec'</tt> might be complementary
+for understanding the problem. In case of unrecoverable problem
+invoke the <tt>function</tt> <tt class="function">restartserver</tt> in order to re-initialize
+Maxima.
+<p><b>Input arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>function</tt></td>
+<td class="args" width="80%">String: name of a Maxima <tt>function</tt></td></tr>
+<tr><td class="args"><tt><tt>arg1</tt>, <tt>arg2</tt></tt></td>
+<td class="args">Strings, <tt><tt class="function">sym</tt></tt>-objects or <tt class="function">syml</tt>-objects: arguments of the
+Maxima <tt>function</tt>. Note that <tt class="function">syml</tt>-objects have been
+implemented specifically for the <tt>function</tt> '<tt class="function">maxima</tt>' as
+some Maxima functions require input arguments defined
+as lists rather than matrices.
+</td></tr>
+</table></p>
+
+<p><b>Output arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt><tt class="function">sym</tt></tt></td>
+<td class="args" width="80%">Symbolic object.
+</td></tr>
+</table></p>
+
+<p><b>See also</b>: <a href="str2max2sym.html"><tt class="function">str2max2sym</tt></a>, <a href="mexec.html"><tt class="function">mexec</tt></a>, <a href="mhlp.html"><tt class="function">mhlp</tt></a>, <a href="syml.html"><tt class="function">syml</tt></a>.</p><p><hr></p>
+
+<pre>
+<u>EXAMPLES</u>
+   x = maxima('factorsum','a*x*z+a*z+a*w*x+v*x+u*x+a*w+v+u')
+
+   p1=sym('-a*b^2-3*b^2+a^2*b+3*a*b+3*b+a^2+a');
+   p2=sym('-a*b^3-3*b^3-a*b^2+a^3*b+3*a^2*b+a*b+3*b+a^3+a');
+   maxima('gcd',p1,p2)
+
+   p=sym('a^2*b^2-3+a*b*(a-b)*b^6');
+   maxima('scsimp',p,'a=b')
+
+   p=maxima('solve',syml(['a*x+b*y=3','a*x*y = 2']),syml(['x','y']))
+   p.x
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>

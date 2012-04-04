@@ -1,0 +1,48 @@
+<html><head>
+<title>SymT function: ra2str</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Utility for evaluation from values in the workspace of rational
+expressions .
+<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[str,var] = <font color="green"><tt>ra2str</tt></font>(r_expr)</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt><font color="green"><tt>r_expr</tt></font></tt></font></b>&nbsp;: &nbsp;
+Scilab standard rational expression
+
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>str</tt></font></b>&nbsp;: &nbsp;
+String which can be evaluated
+
+</li>
+</ul><br>
+
+<hr>
+
+<font color="green"><pre>
+<u>EXAMPLE
+</u>
+   r_expr = [%s 3*%s 1/%s;2+1/(1+3*%s) 2 %s];
+   [str,var] = ra2str(r_expr)
+</pre></font>
+</body>
+</html>

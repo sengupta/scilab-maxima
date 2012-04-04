@@ -1,0 +1,62 @@
+<html><head>
+<title>SymT function: %sym_simple</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Simplification of symbolic expressions using the Maxima functions fullratsimp and trigrat.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[B] = <font color="green"><tt>simple</tt></font>(A[,x1[,x2,...]])</tt></font></b></li>
+</ul>
+<br>
+
+<br><font color="blue"><b>Caution</b></font><br>
+
+<br>The name of this function is misleading, it is not similar to
+the Matlab simple function....
+<br><br>
+
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>A</tt></font></b>&nbsp;: &nbsp;
+Rational symbolic expression
+
+xi Symbolic atoms appearing in <font color="green"><tt>A</tt></font> for ordering factorisations.
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>B</tt></font></b>&nbsp;: &nbsp;
+Simplified symbolic expression
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="sym_expand.html"><font color="green"><tt>sym/expand</tt></font></a>, <a href="sym_factor.html"><font color="green"><tt>sym/factor</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLES</u>
+
+    A = sym('3*(a+b+c)^3-(a+b-c)^3');
+    B0 = simple(A)
+    B1 = simple(A,'a')
+    syms b
+    B2 = simple(A,b)
+
+    syms a real
+    G = [cos(a) sin(a);-sin(a) cos(a)]
+    simple(G^2)
+    simple(G'*G)
+</pre></font>
+</body>
+</html>

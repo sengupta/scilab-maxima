@@ -1,0 +1,40 @@
+<html><head>
+<title>SymT function: hlp</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>This function is similar to Matlab help function. It displays the first set of two adjacent lines of comments (ignores isolated comment lines)<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>hlp function_name</tt></font></b></li>
+<li><b><font color="green"><tt>hlp object_type/function_name</tt></font></b></li>
+</ul>
+<br>
+
+<br><font color="blue"><b>Remark</b></font><br>
+
+<br>The functions "help fields" must be structured so that the perl
+script '<font color="green"><tt>hlp2html</tt></font>.pl' can transform this field into an HTML file
+compatible with the standard Scilab help function. For details
+on the required structure, see the perl script file heading.
+<br>You can add two kinds of HTML tags: &lt;PRE&gt; &lt;/PRE&gt; and &lt;BR&gt; (lower
+cases), these tags will be used by the perl script but will not
+be displayed when <font color="green"><tt>hlp</tt></font> is invoked.
+<br><br>
+
+
+<br><font color="blue"><b>See also</b></font>: <a href="typ.html"><font color="green"><tt>typ</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLE</u>
+   hlp hlp
+   hlp size
+   hlp sym/dbl
+</pre></font>
+</body>
+</html>

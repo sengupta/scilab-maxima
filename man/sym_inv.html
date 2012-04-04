@@ -1,0 +1,45 @@
+<html><head>
+<title>SymT function: %sym_inv</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Inverts a symbolic matrix using the Maxima function invert.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[B] = <font color="green"><tt>inv</tt></font>(A)</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>A</tt></font></b>&nbsp;: &nbsp;
+Symbolic square matrix.
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>B</tt></font></b>&nbsp;: &nbsp;
+Symbolic square matrix.
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="sym_det.html"><font color="green"><tt>sym/det</tt></font></a>, <a href="sym_rank.html"><font color="green"><tt>sym/rank</tt></font></a>, <a href="sym_rref.html"><font color="green"><tt>sym/rref</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLE</u>
+    A = sym(['a-b','a-b';'2','a+b'])
+    B = inv(A)
+    simple(B)
+</pre></font>
+</body>
+</html>

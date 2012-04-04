@@ -1,0 +1,35 @@
+<html><head>
+<title>SymT function: symbolic</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: symbolic</h1></p>
+
+<p><hr></p>
+
+<pre>
+EXAMPLE 1 matrix manipulation
+   syms a b c
+   M = [a^2+3 0 b*c;1 c^3 b;1 2/a 3/(1+4*b)]
+   size(M)
+   det(M)
+   N = inv(M)
+   simple(M*N)
+
+ EXAMPLE 2 scalar functions
+   f=sym('3*cos(a)+b')
+   a=%pi;
+   b=sym('b');
+   eval(f)
+
+ For more examples type hlp <name_of_function>
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>

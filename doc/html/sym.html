@@ -1,0 +1,94 @@
+<html><head>
+<title>SymT function: sym</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: sym</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>Main function of the symbolic toolbox for defining symbolic objects (<tt class="function">sym</tt>-objects)</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[a_sym] = <tt class="function">sym</tt>(a_str[,type])</tt></li>
+</ul>
+
+<p><b>Description</b></p>
+
+Main function of the symbolic toolbox as it returns a symbolic
+object (<tt class="function">sym</tt>-object) from an argument of <tt>type</tt>
+<br><br>
+- constant,
+<br><br>
+- string,
+<br><br>
+- polynomial,
+<br><br>
+- rational,
+<br><br>
+- list,
+<br><br>
+- (symbolic)
+<br><br>
+A <tt class="function">sym</tt>-object <tt>X</tt> is an mlist containing a string compatible with
+Maxima : <tt>X</tt>.<tt>str1</tt>. In future versions additional strings might be
+considered.
+<p><b>Input arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt><tt>a_str</tt></tt></td>
+<td class="args" width="80%">String defining a symbolic atom or a combination of
+symbolic atoms (see example below). <tt><tt>a_str</tt></tt> can also be
+a constant, polynomial, rational, symbolic or a list
+object, in this case it is converted to a <tt class="function">sym</tt>-object.</td></tr>
+<tr><td class="args"><tt>type</tt></td>
+<td class="args">String defining the <tt>type</tt> of all atoms involved in
+<tt><tt>a_str</tt></tt>. Supported types are: even, odd, integer,
+rational, irrational, real, imaginary or complex.
+</td></tr>
+</table></p>
+
+<p><b>Output arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt><tt>a_sym</tt></tt></td>
+<td class="args" width="80%">Symbolic object.
+</td></tr>
+</table></p>
+
+<p><b>See also</b>: <a href="syms.html"><tt class="function">syms</tt></a>, <a href="symtype.html"><tt class="function">symtype</tt></a>.</p><p><hr></p>
+
+<pre>
+<u>EXAMPLES</u>
+   a = sym('a'); b = sym('b');
+   Y = [a^2-3*b a*b*5];
+   Y.str1
+
+   a = sym('a','odd');
+   symtype(a)
+
+   X = sym(['a+b*2+3*a' 'cos(c)';'1/(3*a-sin(c))' '3'])
+   X.str1
+
+   Z = sym('x^2+y^3+z','imaginary');
+   real(Z)
+   symtype('z') // string 'z' because the atom z is not in Scilab workspace
+
+   M=[0.33333333333 0.8585858585;0.121212121212 0.22222222222];
+   sym(M)
+
+   syms a
+   0.3333333333*a
+   '0.3333333333'*a
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>

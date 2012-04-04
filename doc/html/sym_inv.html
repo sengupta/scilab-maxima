@@ -1,0 +1,50 @@
+<html><head>
+<title>SymT function: %sym_inv</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: %sym_inv</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>Inverts a symbolic matrix using the Maxima function invert.</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[B] = <tt class="function">inv</tt>(A)</tt></li>
+</ul>
+
+<p><b>Input arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>A</tt></td>
+<td class="args" width="80%">Symbolic square matrix.
+</td></tr>
+</table></p>
+
+<p><b>Output arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>B</tt></td>
+<td class="args" width="80%">Symbolic square matrix.
+</td></tr>
+</table></p>
+
+<p><b>See also</b>: <a href="sym_det.html"><tt class="function">sym/det</tt></a>, <a href="sym_rank.html"><tt class="function">sym/rank</tt></a>, <a href="sym_rref.html"><tt class="function">sym/rref</tt></a>.</p><p><hr></p>
+
+<pre>
+<u>EXAMPLE</u>
+    A = sym(['a-b','a-b';'2','a+b'])
+    B = inv(A)
+    simple(B)
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>

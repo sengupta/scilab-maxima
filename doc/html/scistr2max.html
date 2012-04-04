@@ -1,0 +1,52 @@
+<html><head>
+<title>SymT function: scistr2max</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: scistr2max</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>Transforms a Scilab string array describing a matrix into a matrix compatible with Maxima.</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[str2] = <tt class="function">scistr2max</tt>(str1)</tt></li>
+</ul>
+
+<p><b>Input arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt><tt>str1</tt></tt></td>
+<td class="args" width="80%">Simple string or array of strings or string of the form
+'<tt>[a,<tt>b</tt>;c,<tt>d</tt>]</tt>'
+</td></tr>
+</table></p>
+
+<p><b>Output arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt><tt>str2</tt></tt></td>
+<td class="args" width="80%">String compatible with Maxima
+</td></tr>
+</table></p>
+
+<p><b>See also</b>: <a href="max2scistr.html"><tt class="function">max2scistr</tt></a>, <a href="str2max2sym.html"><tt class="function">str2max2sym</tt></a>.</p><p><hr></p>
+
+<pre>
+<u>EXAMPLES</u>
+    scistr2max('a')
+    scistr2max('[a*b c^3*4;0 a*b/c^2]')
+    scistr2max(['a*b' 'c^3*4';'0' 'a*b/c^2'])
+    scistr2max('matrix([a*b,c^3*4],[0,a*b/c^2]')
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>

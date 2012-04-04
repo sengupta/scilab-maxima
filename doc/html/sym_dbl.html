@@ -1,0 +1,50 @@
+<html><head>
+<title>SymT function: %sym_dbl</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: %sym_dbl</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>Converts symbolic numbers to floating point numbers. Note that in some cases this function looks similar to eval but the output of eval is a symbolic object (possibly symbolic number).</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[bb] = <tt class="function">dbl</tt>(aa)</tt></li>
+</ul>
+
+<p><b>Input arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>aa</tt></td>
+<td class="args" width="80%">Symbolic expression containing no symbolic atoms.
+</td></tr>
+</table></p>
+
+<p><b>Output arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>bb</tt></td>
+<td class="args" width="80%">Scalar or matrix of floating point numbers
+</td></tr>
+</table></p>
+
+<p><b>See also</b>: <a href="bfloat.html"><tt class="function">bfloat</tt></a>, <a href="float.html"><tt class="function">float</tt></a>, <a href="sym_eval.html"><tt class="function">sym/eval</tt></a>.</p><p><hr></p>
+
+<pre>
+<u>EXAMPLE:</u>
+    a = log(sym('3'))
+    float(a)        // Symbolic floating point number
+    dbl(a)          // Numerical floating point number (indented)
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>

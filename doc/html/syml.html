@@ -1,0 +1,59 @@
+<html><head>
+<title>SymT function: syml</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: syml</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>Defines Maxima lists of symbolic objects. Maxima lists are of the form <tt>[a,<tt>b</tt>,c]</tt> (row vectors without the 'matrix(.)' string). No operation can be applied to these objects. Useful only as arguments of the function '<tt class="function">maxima</tt>' when a list is expected rather than a matrix..</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[a_syml] = <tt class="function">syml</tt>(a_str)</tt></li>
+</ul>
+
+<p><b>Description</b></p>
+
+Returns a list of symbolic objects compatible with Maxima syntax
+(<tt class="function">syml</tt>-object) from an arguments of type
+<br><br>
+- constant,
+<br><br>
+- string,
+<br><br>
+- polynomial,
+<br><br>
+- rational,
+<br><br>
+- symbolic,
+<br><br>
+- Scilab list
+<p><b>See also</b>: <a href="maxima.html"><tt class="function">maxima</tt></a>, <a href="mhlp.html"><tt class="function">mhlp</tt></a>, <a href="sym.html"><tt class="function">sym</tt></a>, <a href="syms.html"><tt class="function">syms</tt></a>.</p><p><hr></p>
+
+<pre>
+<u>EXAMPLES</u>
+    X = syml(['a+b*2+3*a' 'cos(c)' '1/(3*a-sin(c))' '3'])
+    X.str1
+
+    syms a b
+    Y = [a^2-3*b a*b*5]
+    Y_list = syml(Y)
+
+    Z = syml(['2*a+b=1','a-3*b=2'])
+
+    syms x
+    arg2_for_plot2d = syml([x,-%pi,%pi])
+    maxima('plot2d',(1+cos(x))/(2+sin(x)),arg2_for_plot2d);
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>

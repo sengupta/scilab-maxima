@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="manually generated">
+   <meta name="keywords" content="maxima,scilab,symbolic,toolbox">
+   <meta name="description" content="Tutorial: Symbolic Toolbox for Scilab.">
+
+<title>Polynomial / rational functions</title>
+<link rel="stylesheet" href="../brown.css" type="text/css">
+<link rel="shortcut icon" href="../favicon.ico"/>
+</head>
+
+<body text="#330000" bgcolor="#cccccc" link="#000000" vlink="#000000" alink="#000000">
+
+<center><table class="bod"><tr><td>
+
+<a name="top"></a>
+<h1>Polynomial / rational functions</h1>
+
+<p><hr></p>
+
+
+<ul>
+ <li><a class="intext" href="objects.html">Symbolic object generation</a></li>
+ <li><a class="intext" href="elementary.html">Elementary / trigonometric functions</a></li>
+ <li><span class="focus">Polynomial / rational functions</span>
+     <ul>
+         <li><a title="" href="#f_factor"><tt class="function">factor</tt>, <tt class="function">expand</tt>, <tt class="function">simple</tt>, <tt class="function">horner</tt></a></li>
+         <li><a title="" href="#f_numden"><tt class="function">numden</tt></a></li>
+         <li><a title="" href="#f_gcd"><tt class="function">gcd</tt>, <tt class="function">lcm</tt></a></li>
+         <li><a title="" href="#f_degrees"><tt class="function">degrees</tt>, <tt class="function">coeffs</tt></a></li>
+     </ul></li>
+ <li><a class="intext" href="matrix.html">Matrix manipulations</a></li>
+ <li><a class="intext" href="calculus.html">Calculus</a></li>
+ <li><a class="intext" href="numerical.html">Evaluation and substitution</a></li>
+ <li><a class="intext" href="general.html">General functions</a></li>
+ <li><a class="intext" href="kernel.html">Access to Maxima, communication Scilab&nbsp;/ Maxima</a></li>
+</ul>
+
+<p><table class = "button"><tr>
+   <td class = "button"><a href="../index.html">INDEX</a></td>
+   <td class = "button"><a href="../functions.html">FUNCTIONS</a></td>
+</tr></table></p>
+
+<!-- ================================================================ -->
+
+<p><hr></p>
+
+<p>
+<a name="f_factor"></a><a name="f_expand"></a><a name="f_simple"></a><a name="f_horner"></a>
+<pre>
+<span class="cc">// A symbolic polynomial. Here, as we use a string (faster),
+// a,b,c, are not created in the workspace</span>
+
+   P = <tt class="function">sym</tt>('3*a^3*b^2*c+8*a^2*c-a^2*c')
+
+   <span class="mresults">P  =
+
+   3*a^3*b^2*c+7*a^2*c </span>
+
+   P1 = <tt class="function">factor</tt>(P)
+
+   <span class="mresults">P1  =
+
+   a^2*(3*a*b^2+7)*c</span>
+
+   P2 = <tt class="function">expand</tt>(P1)
+
+   <span class="mresults">P2  =
+
+   3*a^3*b^2*c+7*a^2*c</span>
+
+   <span class="function">syms</span> c
+   P = <span class="function">sym</span>('3*a^3*b^2*c+8*a^2*c-a^2*c*b+(a+b+c)^2')
+   P3 = <span class="function">simple</span>(P,c)
+
+   <span class="mresults">P3  =
+
+   c^2+(3*a^3*b^2+(2-a^2)*b+8*a^2+2*a)*c+b^2+2*a*b+a^2</span>
+
+   <span class="function">syms</span> c
+   P4 = <span class="function">horner</span>(P,c)
+
+   <span class="mresults">P4  =
+
+   c*(c+b*(3*a^3*b-a^2+2)+a*(8*a+2))+b*(b+2*a)+a^2</span>
+</pre>
+</p>
+
+<a name="f_numden"></a>
+<p>
+Extraction of numerators and denominators for rational matrices
+<pre>
+   M = <tt class="function">sym</tt>(['3*a^3*b^2' '7*a^2*c';'a^2*(3*a*b^2+7)' '8*a^2*c']);
+   N = <tt class="function">inv</tt>(M);
+
+   [num,den] = <tt class="function">numden</tt>(N)
+
+   <span class="mresults">den  =
+
+   !(3*a^3*b^2-49*a^2)      (3*a^3*b^2-49*a^2)    !
+   !                                              !
+   !((3*a^3*b^2-49*a^2)*c)  ((3*a^2*b^2-49*a)*c)  !
+
+   num  =
+
+   !8             -7     !
+   !                     !
+   !-(3*a*b^2+7)  3*b^2  !</span>
+</pre>
+</p>
+
+<p>
+<a name="f_gcd"></a><a name="f_lcm"></a>
+Fuinctions: <tt class="function">gcd</tt> (Greatest Common Divisor),
+<tt class="function">lcm</tt> (Least Common Multiple).
+<pre>
+   <tt class="function">syms</tt> y
+   p1 = 6*y^6-6*y^5+14*y^3-16*y^2+2*y;
+   p2 = 3*y^7+3*y^5-2*y^4-y^3+7*y^2-22*y+3;
+
+<span class="cc">// Only one atom (y), so, 3rd argument of gcd/lcm not required</span>
+
+   <tt class="function">gcd</tt>(p1,p2)
+
+   <span class="mresults">ans  =
+
+   (9*y^4+21*y-3)/2</span>
+
+   <tt class="function">lcm</tt>(p1,p2)
+
+   <span class="mresults">ans  =
+
+   2*(y-1)*y*(y^3+y-3)*(3*y^4+7*y-1)</span>
+</pre>
+</p>
+
+<a name="f_degrees"></a><a name="f_coeffs"></a>
+Other functions:
+<ul>
+  <li><tt class="function">degrees</tt>: e.g., <tt class="function">degrees</tt><tt>(p1,y)</tt>
+returns the partial degree of <tt>p1</tt> w.r.t. <tt>y</tt>, </li>
+  <li><tt class="function">coeffs</tt>: e.g., <tt class="function">coeffs</tt><tt>(p1,y,3)</tt>
+  returns the coefficient of <tt>y^3</tt> in <tt>p1</tt>.</li>
+</ul>
+Most of the functions presented in this section must only be used
+with polynomial arguments (if the first argument is rational, the result might be erroneous).
+
+<p><table class = "button"><tr><td class = "button"><a href="polynomial.html">TOP</a></td></tr></table></p>
+</td></tr></table></center>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body></html>

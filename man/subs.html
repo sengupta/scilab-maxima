@@ -1,0 +1,72 @@
+<html><head>
+<title>SymT function: subs</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Substitution based on the Maxima function <font color="green"><tt>'subst'</tt></font>.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[expr2] = <font color="green"><tt>subs</tt></font>(expr1,old,new)</tt></font></b></li>
+</ul>
+<br>
+
+<br><font color="blue"><b>Description</b></font><br>
+
+<br>Similar to <tt>sym/eval</tt> but here, workspace values are ignored.
+<br><br>
+
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt><font color="green"><tt>expr1</tt></font></tt></font></b>&nbsp;: &nbsp;
+Symbolic expression in which '<font color="green"><tt>new</tt></font>' will be substituted
+for '<font color="green"><tt>old</tt></font>'.</li>
+<li><b><font color="green"><tt>old</tt></font></b>&nbsp;: &nbsp;
+Symbolic atom or vector of atoms to be substituded.
+Atoms can also be replaced by sub-expressions appearing
+explicitely in <font color="green"><tt><font color="green"><tt>expr1</tt></font></tt></font>. See illutrative examples.</li>
+<li><b><font color="green"><tt>new</tt></font></b>&nbsp;: &nbsp;
+Symbolic expression or vector of expressions of same
+length as '<font color="green"><tt>old</tt></font>'. Substitution is performed sequentially,
+<font color="green"><tt>old</tt></font>(<font color="green"><tt>1</tt></font>) replaced by <font color="green"><tt>new</tt></font>(<font color="green"><tt>1</tt></font>) then <font color="green"><tt>old</tt></font>(<font color="green"><tt>2</tt></font>) replaced by <font color="green"><tt>new</tt></font>(<font color="green"><tt>2</tt></font>)
+and so on. See illutrative examples.
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt><font color="green"><tt>expr2</tt></font></tt></font></b>&nbsp;: &nbsp;
+Resulting symbolic expression after substitution.
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="sym_eval.html"><font color="green"><tt>sym/eval</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLES</u>
+    syms a b c x 'real'
+    c1 = (a+%i*b)^2;
+    c2 = subs(c1,a,c-%i*b)
+
+    c3 = cos(a) + b*sin(c);
+    c4 = subs(c3,[a b],[2*c c^2])
+
+ <u>Substitutions performed sequencially !</u>
+    c5 = subs(c3,[a b x],[x a b]) // a->x then b->a then x->b
+    subs(c3,[a b],[b a])          // a->b then b->a
+
+ <u>Substitution of sub-expressions</u>
+    c6 = subs(c1,a+%i*b,3)
+    subs(expand(c1),a+%i*b,3)  // doesn't work after expansion
+</pre></font>
+</body>
+</html>

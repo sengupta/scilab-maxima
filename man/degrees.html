@@ -1,0 +1,51 @@
+<html><head>
+<title>SymT function: degrees</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Retrieves <font color="green"><tt>degrees</tt></font> of polynomial expressions using the Maxima function hipow.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[deg] = <font color="green"><tt>degrees</tt></font>(A,x)</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>A</tt></font></b>&nbsp;: &nbsp;
+Polynomial symbolic expression. Don't use with rational
+expressions.</li>
+<li><b><font color="green"><tt>x</tt></font></b>&nbsp;: &nbsp;
+Symbolic atom appearing in <font color="green"><tt>A</tt></font>.
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>deg</tt></font></b>&nbsp;: &nbsp;
+Scalar (or matrix): partial degree(<font color="green"><tt>s</tt></font>) of <font color="green"><tt>x</tt></font> in <font color="green"><tt>A</tt></font>
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="numden.html"><font color="green"><tt>numden</tt></font></a>, <a href="coeffs.html"><font color="green"><tt>coeffs</tt></font></a>, <a href="findsym.html"><font color="green"><tt>findsym</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLES</u>
+    P = sym('[(a+b+c)^3-a^3;a*b*c]');
+    expand(P)
+
+    degrees(P,'a')
+    degrees(P,'b')
+    degrees(P,'c')
+</pre></font>
+</body>
+</html>

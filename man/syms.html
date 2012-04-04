@@ -1,0 +1,49 @@
+<html><head>
+<title>SymT function: syms</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Creates symbolic atoms in Scilab workspace and declares types (as real, odd,...) of these atoms in Maxima workspace.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>syms aa bb string nn string cc string</tt></font></b></li>
+<li><b><font color="green"><tt>syms aa bb cc</tt></font></b></li>
+</ul>
+<br>
+
+<br><font color="blue"><b>Description</b></font><br>
+
+<br>By default, non already typed atoms are considered as complex
+(Maxima <font color="green"><tt>5</tt></font>.<font color="green"><tt>9</tt></font>.<font color="green"><tt>2</tt></font> or higher) or real (Maxima <font color="green"><tt>5</tt></font>.<font color="green"><tt>9</tt></font>.<font color="green"><tt>1</tt></font>). If a type was
+already declared and if a new type is not specified when <font color="green"><tt>syms</tt></font>
+is invoked, the previously defined type is preserved.
+<br><br>
+
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>aa, <font color="green"><tt>bb</tt></font>, <font color="green"><tt>cc</tt></font>, nn</tt></font></b>&nbsp;: &nbsp;
+Strings (names of symbolic atoms)</li>
+<li><b><font color="green"><tt>string</tt></font></b>&nbsp;: &nbsp;
+Strings: even, odd, integer, rational, irrational,
+real, imaginary, complex or default.
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="sym.html"><font color="green"><tt>sym</tt></font></a>, <a href="symtype.html"><font color="green"><tt>symtype</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLES</u>
+    syms a b real c d imaginary
+    symtype(a)
+    symtype(d)
+</pre></font>
+</body>
+</html>

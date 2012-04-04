@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="manually generated">
+   <meta name="keywords" content="maxima,scilab,symbolic,toolbox">
+   <meta name="description" content="Tutorial: Symbolic Toolbox for Scilab.">
+
+<title>Evaluation and substitution.</title>
+<link rel="stylesheet" href="../brown.css" type="text/css">
+<link rel="shortcut icon" href="../favicon.ico"/>
+</head>
+
+<body text="#330000" bgcolor="#cccccc" link="#000000" vlink="#000000" alink="#000000">
+
+<center><table class="bod"><tr><td>
+
+<a name="top"></a>
+<h1>Evaluation and substitution.</h1>
+
+<p><hr></p>
+
+<ul>
+ <li><a class="intext" href="objects.html">Symbolic object generation</a></li>
+ <li><a class="intext" href="elementary.html">Elementary / trigonometric functions</a></li>
+ <li><a class="intext" href="polynomial.html">Polynomial / rational functions</a></li>
+  <li><a class="intext" href="matrix.html">Matrix manipulations</a></li>
+   <li><a class="intext" href="calculus.html">Calculus</a></li>
+ <li><span class="focus">Evaluation and substitution</span>
+     <ul>
+         <li><a title="" href="#f_eval"><tt class="function">eval</tt></a></li>
+         <li><a title="" href="#f_subs"><tt class="function">subs</tt></a></li>
+         <li><a title="" href="#f_bfloat"><tt class="function">bfloat</tt></a></li>
+         <li><a title="" href="#f_float"><tt class="function">float</tt>, <tt class="function">dbl</tt></a></li>
+     </ul></li>
+ <li><a class="intext" href="general.html">General functions</a></li>
+ <li><a class="intext" href="kernel.html">Access to Maxima, communication Scilab&nbsp;/ Maxima</a></li>
+</ul>
+
+<p><table class = "button"><tr>
+   <td class = "button"><a href="../index.html">INDEX</a></td>
+   <td class = "button"><a href="../functions.html">FUNCTIONS</a></td>
+</tr></table></p>
+
+<!-- ================================================================ -->
+
+<p><hr></p>
+
+<p>
+<b>Symbolic substitutions.</b>
+<a name="f_eval"></a>
+The function <tt class="function">eval</tt> evaluates a symbolic object from values
+in Scilab workspace.
+All atoms must be defined in the workspace, possibly as constant, symbolic or
+polynomial&nbsp;/ rational objects.
+<pre>
+   <tt class="function">syms</tt> a b c
+   M = [a^2+3 0 b*c;1 c^3 b;1 2/a 3/(1+4*b)]
+
+   <span class="mresults">M  =
+
+   !a^2+3  0    b*c        !
+   !                       !
+   !1      c^3  b          !
+   !                       !
+   !1      2/a  3/(4*b+1)  !</span>
+
+   a = 3;
+   b = c^2;
+   c = %s; <span class="cc">// %s is by default the Scilab polynomial variable</span>
+   M2 = <tt class="function">eval</tt>(M)
+
+   <span class="mresults">M2  =
+
+   !12  0          c^2*s        !
+   !                            !
+   !1   s^3        c^2          !
+   !                            !
+   !1   0.6666667  3/(4*c^2+1)  !</span>
+</pre>
+</p>
+
+<p>
+<a name="f_subs"></a>
+The function <tt class="function">subs</tt> performs substitutions defined as
+input arguments rather than from values in the workspace (as for <tt class="function">eval</tt>).
+<pre>
+<span class="cc">// a replaced by 2*c and b replaced by c^2 in expr1</span>
+
+   <tt class="function">syms</tt> a b c
+   expr1 = cos(a) + b*sin(c);
+   expr2 = <tt class="function">subs</tt>(expr1,[a b],[2*c c^2])
+
+   <span class="mresults">expr2  =
+
+   cos(2*c)+c^2*sin(c)</span>
+
+<span class="cc">// The substitions are performed sequencially, so for interverting
+// a and b, and intermediate variable is required.</span>
+
+   <tt class="function">syms</tt> x
+   expr3 = <tt class="function">subs</tt>(expr1,[a b x],[x a b])
+
+   <span class="mresults">expr3  =
+
+   a*sin(c)+cos(b)</span>
+</pre>
+</p>
+
+<p>
+<a name="f_bfloat"></a>
+<b>Numerical evaluation.</b> Some symbolic expressions contain functions (e.g.,
+<tt class="function">cos</tt><tt>(3)</tt>) or operations  (e.g.,
+<tt>12345/54321</tt>). The functions presented here permit us to transform these
+expressions (or sub-expressions for <tt class="function">float</tt> and
+<tt class="function">bfloat</tt>) into floating point numerical values.
+</p>
+
+<p>
+The functions of this section are provisional.
+In particular, concerning numerical precision,
+applying the function <tt class="function">sym</tt> to a Scilab floating point number
+must be revisited (transformation to a rational form inducing an approximation error
+larger than <tt>%eps</tt> in most cases).
+</p>
+
+<p>
+The function <tt class="function">bfloat</tt> ("big float") displays symbolic
+  numbers with as many significant digits as desired, e.g.:
+  <pre>
+   <tt class="function">bfloat</tt>(<tt class="function">sym</tt>('%pi'),500)
+
+   <span class="mresults">ans  =
+
+   3.14159265358979323846264338327950288419716939937510582097494
+        45923078164062862089986280348253421170679821480865132823
+        06647093844609550582231725359408128481117450284102701938
+        52110555964462294895493038196442881097566593344612847564
+        82337867831652712019091456485669234603486104543266482133
+        93607260249141273724587006606315588174881520920962829254
+        09171536436789259036001133053054882046652138414695194151
+        16094330572703657595919530921861173819326117931051185480
+        744623799627495673518857527248912279381830119491b0</span>
+
+   <tt class="function">bfloat</tt>('a/3',50)
+
+   <span class="mresults">ans  =
+
+   3.3333333333333333333333333333333333333333333333333b-1*a</span>
+  </pre>
+<a name="f_float"></a><a name="f_dbl"></a>
+(use the function <tt class="function">float</tt> to get rid of "<tt>b-1</tt>" in the
+above result).
+</p>
+
+<p>
+The functions <tt class="function">float</tt> and <tt class="function">dbl</tt>
+return respectively symbolic numbers (result non-indented) and  Scilab
+floating point numbers (result indented).
+<pre>
+   x = <tt class="function">cos</tt>(<tt class="function">sym</tt>('%pi')/4)
+
+   <span class="mresults">x  =
+
+   sqrt(2)/2</span>
+
+   <tt class="function">float</tt>(x)
+
+   <span class="mresults">ans  =
+
+   0.70710678118654757</span>
+
+   <tt class="function">dbl</tt>(x)
+
+   <span class="mresults">ans  =
+
+      0.7071068</span>
+</pre>
+</p>
+
+
+<p><table class = "button"><tr><td class = "button"><a href="numerical.html">TOP</a></td></tr></table></p>
+</td></tr></table></center>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body></html>

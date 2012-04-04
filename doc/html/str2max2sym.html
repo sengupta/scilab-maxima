@@ -1,0 +1,60 @@
+<html><head>
+<title>SymT function: str2max2sym</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: str2max2sym</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>Transforms a set of strings into a set of instructions in Maxima syntax (see <tt class="function"><tt>scistr2max</tt></tt>). The Maxima commands are executed (see <tt>unix_g</tt>). Then, the result is treated and converted to a symbolic object.</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[resp,iserr] = <tt class="function">str2max2sym</tt>(str1[,flag])</tt></li>
+</ul>
+
+<p><b>Input arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt><tt>str1</tt></tt></td>
+<td class="args" width="80%">String like 'conjugate(a+%i*<tt>b</tt>)' (a function applied to
+an argument still in Scilab syntax.</td></tr>
+<tr><td class="args"><tt>flag</tt></td>
+<td class="args">String equal to <tt>'str'</tt>, <tt>'vec'</tt> or '<tt class="function">sym</tt>' (default: <tt>flag</tt> =
+'<tt class="function">sym</tt>'). This <tt>flag</tt> sets the type of the output argument
+<tt class="function">sym</tt> as follows:
+<br> - case <tt>'str'</tt> -> concatenated string
+<br> - case <tt>'vec'</tt> -> vector of strings
+<br> - case '<tt class="function">sym</tt>' -> symbolic object
+</td></tr>
+</table></p>
+
+<p><b>Output arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>resp</tt></td>
+<td class="args" width="80%"><tt class="function">sym</tt>-object,</td></tr>
+<tr><td class="args"><tt>iserr</tt></td>
+<td class="args">Should be equal to <tt>0</tt> if no error occured.
+</td></tr>
+</table></p>
+
+<p><b>See also</b>: <a href="max2scistr.html"><tt class="function">max2scistr</tt></a>, <a href="scistr2max.html"><tt class="function">scistr2max</tt></a>.</p><p><hr></p>
+
+<pre>
+<u>EXAMPLE</u>
+   resp = str2max2sym('matrix([a,b],[c,d])','cos(%)')
+   resp = str2max2sym(['a','b';'c','d'],'cos(%)')
+   resp = str2max2sym('[a,b;c,d]','cos(%)')
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>

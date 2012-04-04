@@ -1,0 +1,57 @@
+<html><head>
+<title>SymT function: mfun</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Execute a <font color="green"><tt>function</tt></font> with several arguments in Maxima and retrieve result.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[numb] = <font color="green"><tt>mfun</tt></font>(function,arg1,arg2,...)</tt></font></b></li>
+</ul>
+<br>
+
+<br><font color="blue"><b>Description</b></font><br>
+
+<br>Use restricted to Maxima functions returning a number. Type
+'<font color="green"><tt>mhlp</tt></font> <font color="green"><tt>maxima_function</tt></font>' for a description of a Maxima <font color="green"><tt>function</tt></font>.
+<br><br>
+
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>function</tt></font></b>&nbsp;: &nbsp;
+String: name of a Maxima <font color="green"><tt>function</tt></font></li>
+<li><b><font color="green"><tt><font color="green"><tt>arg1</tt></font>, <font color="green"><tt>arg2</tt></font></tt></font></b>&nbsp;: &nbsp;
+Strings, <font color="green"><tt>sym</tt></font>-objects or <font color="green"><tt>syml</tt></font>-objects: arguments of the
+Maxima <font color="green"><tt>function</tt></font>. Note that <font color="green"><tt>syml</tt></font>-objects have been
+implemented specifically for the <font color="green"><tt>function</tt></font> '<font color="green"><tt>maxima</tt></font>' as
+some Maxima functions require input arguments defined
+as lists rather than matrices.
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>numb</tt></font></b>&nbsp;: &nbsp;
+Scilab floating point number.
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="maxima.html"><font color="green"><tt>maxima</tt></font></a>, <a href="mhlp.html"><font color="green"><tt>mhlp</tt></font></a>, <a href="syml.html"><font color="green"><tt>syml</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLES</u>
+   x = mfun('cos','%pi/4')
+   x = mfun('binomial',11,7)
+</pre></font>
+</body>
+</html>

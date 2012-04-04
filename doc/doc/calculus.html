@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="manually generated">
+   <meta name="keywords" content="maxima,scilab,symbolic,toolbox">
+   <meta name="description" content="Tutorial: Symbolic Toolbox for Scilab.">
+
+<title>Calculus.</title>
+<link rel="stylesheet" href="../brown.css" type="text/css">
+<link rel="shortcut icon" href="../favicon.ico"/>
+</head>
+
+<body text="#330000" bgcolor="#cccccc" link="#000000" vlink="#000000" alink="#000000">
+
+<center><table class="bod"><tr><td>
+
+<a name="top"></a>
+<h1>Calculus.</h1>
+
+<p><hr></p>
+
+<ul>
+ <li><a class="intext" href="objects.html">Symbolic object generation</a></li>
+ <li><a class="intext" href="elementary.html">Elementary / trigonometric functions</a></li>
+ <li><a class="intext" href="polynomial.html">Polynomial / rational functions</a></li>
+  <li><a class="intext" href="matrix.html">Matrix manipulations</a></li>
+ <li><span class="focus">Calculus</span>
+     <ul>
+         <li><a title="" href="#f_diff"><tt class="function">diff</tt></a></li>
+         <li><a title="" href="#f_integ"><tt class="function">integ</tt></a></li>
+         <li><a title="" href="#f_taylor"><tt class="function">taylor</tt></a></li>
+         <li><a title="" href="#f_limit"><tt class="function">limit</tt></a></li>
+         <li><a title="" href="#f_symsum"><tt class="function">symsum</tt></a></li>
+         <li><a title="" href="#f_laplace"><tt class="function">laplace</tt>, <tt class="function">ilaplace</tt></a></li>
+     </ul></li>
+ <li><a class="intext" href="numerical.html">Evaluation and substitution</a></li>
+ <li><a class="intext" href="general.html">General functions</a></li>
+ <li><a class="intext" href="kernel.html">Access to Maxima, communication Scilab&nbsp;/ Maxima</a></li>
+</ul>
+
+<p><table class = "button"><tr>
+   <td class = "button"><a href="../index.html">INDEX</a></td>
+   <td class = "button"><a href="../functions.html">FUNCTIONS</a></td>
+</tr></table></p>
+
+<!-- ================================================================ -->
+
+<p><hr></p>
+
+<a name="f_diff"></a>
+<p>
+Differentiation with function <tt class="function">diff</tt>:
+<pre>
+<span class="cc">// A symbolic polynomial. Here, as we use a string (faster),
+// a,b,c, are not created in the workspace</span>
+
+   P = <tt class="function">sym</tt>('3*a^3*b^2*c+8*a^2*c-a^2*c');
+   <tt class="function">syms</tt> a
+
+<span class="cc">// Derivative w.r.t. a</span>
+
+   dP = <tt class="function">diff</tt>(P,a)
+
+   <span class="mresults">dP  =
+
+   9*a^2*b^2*c+14*a*c</span>
+
+<span class="cc">// 2nd derivative w.r.t. a, 1st w.r.t. b (not in workspace)</span>
+
+   dP = <tt class="function">diff</tt>(P,a,2,'b',1)
+
+   <span class="mresults">dP  =
+
+   36*a*b*c</span>
+</pre>
+</p>
+
+<a name="f_integ"></a>
+<p>
+Integration with function <tt class="function">integ</tt>:
+<pre>
+   <tt class="function">syms</tt> a b
+   P=[a a^2;b 3];
+
+<span class="cc">// Indefinite integral w.r.t. a</span>
+
+   <tt class="function">integ</tt>(P,a)
+
+   <span class="mresults">ans  =
+
+   !a^2/2  a^3/3  !
+   !              !
+   !a*b    3*a    !</span>
+
+<span class="cc">// Integral from 0 to 100: integ</tt>(P,a,0,100)</span>
+</pre>
+</p>
+
+<a name="f_taylor"></a>
+<p>
+Taylor expansion  with function <tt class="function">taylor</tt>:
+
+<pre>
+<span class="cc">// Taylor at point 0 and order 10</span>
+
+   <tt class="function">syms</tt> a
+   <tt class="function">taylor</tt>(cos(a),a,0,10)
+
+   <span class="mresults">ans  =
+
+   1-a^2/2+a^4/24-a^6/720+a^8/40320-a^10/3628800</span>
+</pre>
+</p>
+
+<a name="f_limit"></a>
+<p>
+Limit with function <tt class="function">limit</tt>:
+
+<pre>
+<span class="cc">// Limit for a -&gt; 0</span>
+
+   <tt class="function">syms</tt> a b
+   <tt class="function">limit</tt>(sin(a*b)/a,a,0)
+
+   <span class="mresults">ans  =
+
+   b</span>
+</pre>
+</p>
+
+<a name="f_symsum"></a>
+<p>
+Series sum <tt class="function">symsum</tt>:
+
+<pre>
+<span class="cc">// Sum from zero to infinity</span>
+
+   <tt class="function">syms</tt> a b real n integer
+   S = <tt class="function">symsum</tt>((a*b)^n,n,0,%inf)
+
+   <span class="mresults">S  =
+
+   ((a*b)^(%inf+1)-1)/(a*b-1)</span>
+
+   a=1;b=1/3;
+   S = <a href="#f_dbl"><tt class="function">dbl</tt></a>(S)
+
+   <span class="mresults">S  =
+
+   1.5</span>
+</pre>
+</p>
+
+<a name="f_laplace"></a><a name="f_ilaplace"></a>
+<p>
+Laplace transform <tt class="function">laplace</tt> and inverse
+Laplace transform <tt class="function">ilaplace</tt>:
+The function <tt class="function">laplace</tt> recognizes the functions or strings: <tt>delta</tt>,
+<tt>exp</tt>, <tt>log</tt>, <tt>sin</tt>, <tt>cos</tt>, <tt>sinh</tt>, <tt>cosh</tt>, <tt>erf</tt>.
+The inverse function <tt class="function">ilaplace</tt> has very limited features.
+
+<pre>
+   <tt class="function">syms</tt> s t
+   L = <tt class="function">laplace</tt>(diff(cos(t)^3,t),t,s)
+
+   <span class="mresults">L  =
+
+   -3*(s^2+3)/(s^4+10*s^2+9)</span>
+
+   <tt class="function">ilaplace</tt>(L,s,t)
+
+   <span class="mresults">ans  =
+
+   -3*cos(t)^2*sin(t)/t</span>
+
+<span class="cc">// With the Dirac function and time delay</span>
+
+   L = <tt class="function">laplace</tt>('3*delta(t-2)+cos(t)*sin(t)','t','p')
+
+   <span class="mresults">L  =
+
+   3*%e^-(2*p)+1/(p^2+4)</span>
+
+<span class="cc">// The inverse transform doesn't work in this case.</span>
+</pre>
+Note that if you use <tt>t</tt> for the time and <tt>s</tt> for the Laplace variable,
+only the first argument is required, e.g.,
+<tt><tt class="function">ilaplace</tt>(<tt class="function">laplace</tt>(cos(t)))</tt>.
+</p>
+
+
+<p><table class = "button"><tr><td class = "button"><a href="calculus.html">TOP</a></td></tr></table></p>
+</td></tr></table></center>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body></html>

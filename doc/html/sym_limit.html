@@ -1,0 +1,56 @@
+<html><head>
+<title>SymT function: %sym_limit</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: %sym_limit</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>Computes the limit of a symbolic expression using the Maxima function limit</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[B] = <tt class="function">limit</tt>(A,xx,xx0[,sign])</tt></li>
+</ul>
+
+<p><b>Input arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>A</tt></td>
+<td class="args" width="80%">Rational (possibly matrix) symbolic expression.</td></tr>
+<tr><td class="args"><tt>xx</tt></td>
+<td class="args">Symbolic atom appearing in <tt>A</tt>. The limit of <tt>A</tt> is considered
+<tt>w</tt>.r.<tt>t</tt>. <tt>xx</tt>.</td></tr>
+<tr><td class="args"><tt><tt>xx0</tt></tt></td>
+<td class="args">Constant. Value of <tt>xx</tt> at which the limit is evaluated.</td></tr>
+<tr><td class="args"><tt>sign</tt></td>
+<td class="args">String equal to '-' or '+', indicates left or right limit.
+</td></tr>
+</table></p>
+
+<p><b>Output arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>B</tt></td>
+<td class="args" width="80%">Limit in symbolic form.
+</td></tr>
+</table></p>
+
+<p><b>See also</b>: <a href="sym_diff.html"><tt class="function">sym/diff</tt></a>, <a href="sym_integ.html"><tt class="function">sym/integ</tt></a>.</p><p><hr></p>
+
+<pre>
+<u>EXAMPLE</u>
+    syms a
+    limit(cos(a),a,%pi/4)
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>

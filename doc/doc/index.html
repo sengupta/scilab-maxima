@@ -1,0 +1,331 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="manually generated">
+   <meta name="keywords" content="maxima,scilab,symbolic,toolbox">
+   <meta name="description" content="Tutorial: Symbolic Toolbox for Scilab.">
+
+<title>A preliminary Symbolic Toolbox for Scilab</title>
+<link rel="stylesheet" href="../brown.css" type="text/css">
+<link rel="shortcut icon" href="favicon.ico"/>
+</head>
+
+<body text="#330000" bgcolor="#cccccc" link="#000000" vlink="#000000" alink="#000000">
+
+<center><table class="bod"><tr><td>
+
+<a name="top"></a>
+<h1>A preliminary Symbolic Toolbox for Scilab</h1>
+
+<p><hr></p>
+
+April 2006.
+
+<ul>
+   <li><a class="intext" href="#introduction">Introduction</a></li>
+   <li><a class="intext" href="#developpers">If you want to contribute</a></li>
+   <li><a class="intext" href="#installation">Installation</a></li>
+   <li><a class="intext" href="#more">More information</a></li>
+</ul>
+
+<p><table class = "button"><tr>
+   <td class = "button"><a href="objects.html">TUTORIAL</a></td>
+   <td class = "button"><a href="../index.html">INDEX</a></td>
+</tr></table></p>
+
+<!-- ================================================================ -->
+<p><hr></p>
+<a name="introduction"></a>
+<h3>Introduction</h3>
+
+<p>
+The proposed toolbox is an interface between Scilab and Maxima.
+The objective is to make available some Maxima routines directly
+in Scilab workspace using Scilab syntax.
+</p>
+
+<p>
+<b>Warning: this is a preliminary version.</b> There are probably a lot of bugs and many useful
+functions are still missing.
+The main trouble is that some operations are quite slow on account of the
+way both packages communicate.
+</p>
+
+<p>
+The function <tt class="function">restartserver</tt> is a must to know in this
+preliminary version. In case
+of irrelevant replies to your commands (usually replies to former commands) type
+<tt class="function">restartserver</tt>
+<!-- (if Scilab didn't freeze ;-) -->
+in order to re-initialize Maxima workspace
+and the Scilab&nbsp;/ Maxima communication process.
+</p>
+
+<p>
+<b>The symbolic object.</b> Symbolic objects are Scilab <tt>mlists</tt>
+consisting of a string in Maxima syntax. Symbolic objects can be manipulated
+mostly like matrices (operations, concatenation, insertion, extraction). They
+are displayed without indentation permitting us in particular to distinguish between
+symbolic numbers and Scilab floating point numbers. The function
+<tt class="function">typeof</tt> applied to a symbolic object returns the string <tt>'sym'</tt>.
+</p>
+
+<p>
+<b>Function overloading.</b> Only some Scilab built-in functions can be applied to
+user-defined objects (e.g., <tt>abs(x)</tt> where <tt>x</tt> is a symbolic object).
+We have developed a module (OVLD, which must be installed independently of the Symbolic
+Toolbox) in order to make overloading feasible for most
+non built-in functions.
+</p><p>
+<u>This tutorial assumes that this module is installed</u>, otherwise
+some functions must be invoked with the prefix <tt class="function">%sym_</tt> (e.g.,
+<tt class="function">%sym_factor</tt> instead of <tt class="function">factor</tt>).
+</p><p>
+Even if OVLD is installed, the prefix <tt class="function">%sym_</tt> can be useful
+in order to force the use of a function of the symbolic toolbox. For example,
+<tt class="function">%sym_cos</tt><tt>(1/3)</tt> is the cosine of the symbolic number <tt>1/3</tt>
+(result much more precise than using <tt>cos(1/3)</tt>),
+<tt class="function">%sym_expand</tt><tt>((3*%s+2)^4)</tt> or
+<tt class="function">%sym_expand</tt><tt>('(3*a+b)^5')</tt>
+expand a Scilab polynomial or a string and return a symbolic object.
+</p>
+
+<p>
+<b>Comparison with the Matlab Symbolic Toolbox.</b>
+Most functions have a syntax similar to the Matlab Symbolic Toolbox.
+Some functions of the Matlab Toolbox are not available because missing in Maxima
+(e.g., exponentials of matrices, z-transform,...) in addition some functions
+cannot be easily overloaded, so, have a different name
+(<tt>double</tt> -&gt; <tt class="function">dbl</tt>,
+<tt>int</tt> -&gt; <tt class="function">integ</tt>). Functions for plotting and functions
+related to numerical precision are not available (and will not be available unless written
+by someone else).
+</p>
+
+<p>
+Symbolic types are not similar in both toolboxes. List of supported types:
+<tt>even</tt>, <tt>odd</tt>, <tt>integer</tt>, <tt>rational</tt>, <tt>irrational</tt>,
+<tt>real</tt>, <tt>imaginary</tt>, <tt>complex</tt> (default).
+</p>
+
+<p>
+<b>On-line help.</b> There is an on-line "help" function (<tt class="function">hlp</tt>).
+For displaying help of non-overloaded functions, type <tt class="function">hlp</tt>
+followed by a function name, for example <tt class="function">hlp numden</tt>. For
+overloaded functions use the prefix <tt class="function">sym/</tt>
+for example <tt class="function">hlp sym/gcd</tt>.
+</p>
+
+<p>
+<b>Global variables.</b>
+Loading the Symbolic Toolbox defines global variables (<tt>MAX</tt>, <tt>PERL</tt>,
+<tt>SYMDIR</tt>). These variables are the paths to used external programs, so,
+must not be cleared.
+</p>
+
+<p><table class = "button"><tr><td class = "button"><a href="index.html">TOP</a></td></tr></table></p>
+<!-- ================================================================ -->
+
+<p><hr></p>
+<a name="developpers"></a>
+<h3>If you want to contribute.</h3>
+
+<p>
+<b>The sym-object structure:</b> it is a <tt>mlist</tt> with at that time only one field
+denoted <tt>str1</tt>. This field
+is the string which would be used in Maxima for generating the considered object.
+<i>e.g.</i>,
+</p>
+
+<p><center>
+ <tt>a = mlist(['sym';'str1'],'a')</tt>.
+</center>
+</p>
+
+<p>
+This object might be enriched if necessary.
+</p>
+
+<p>
+<b>Server:</b> The main step for improving the toolbox will consist of improving the communication
+between Maxima and Scilab. The server stuff is in the sub-directory <tt>server</tt> of
+the installation directory. It consists of three programs:
+<ul>
+  <li><tt>serveur</tt> (Perl script). This server listen to Maxima on port 2001 and listen
+  to the <tt>interface</tt> program on port 2000.</li>
+  <li><tt>interface</tt> (Perl script or <a class="intext" href="#interface">compiled program</a>).
+  This script/program is used as follows from Scilab:
+  <tt>maxima_response = unix_g('interface instruction_for_maxima')</tt>.</li>
+  <li><tt>serveur.sce</tt> (Scilab script). Searches Maxima and Perl, then launches the server and
+  connects maxima in "server mode" (client mode in fact). This script is executed by <tt>loader.sce</tt>.</li>
+</ul>
+</p>
+
+<p>
+<a name="f_str2max2sym"></a><a name="f_strsci2max"></a><a name="f_max2strsci"></a>
+The function <tt class="function">str2max2sym</tt> is the interface between Scilab and Maxima.
+It is this function which invokes the <tt>interface</tt> program via <tt>unix_g</tt>.
+It might be invoked many times even for simple operations inducing sometimes very slow computation.
+This function depends on
+<ul>
+  <li><tt class="function">strsci2max</tt>: transforms a string with Scilab syntax into a
+      string with Maxima syntax.</li>
+  <li><tt class="function">max2strsci</tt>: transforms a string with Maxima syntax into a
+      string with Scilab syntax.</li>
+</ul>
+</p>
+
+<p>
+Improvements expected:
+<ul>
+  <li>Check if the <tt>interface</tt> script/program is replaced by a program which is not
+  re-launched  each time Scilab and Maxima communicate will improve the speed.</li>
+  <li>Find a way to kill the <tt>interface</tt> program if Maxima doesn't reply
+  after a fixed amount of seconds (otherwise, Scilab freezes).</li>
+</ul>
+</p>
+
+
+<p>
+<b>Maxima:</b> A good knowledge of Maxima will improve several functions and help to
+define important missing functions. In particular, it might be wise to add to
+Maxima a module specialized in matrix manipulations (for example, there is
+no exponential of matrices at that time).
+</p>
+
+<p><table class = "button"><tr><td class = "button"><a href="index.html">TOP</a></td></tr></table></p>
+<!-- ================================================================ -->
+<p><hr></p>
+<a name="installation"></a>
+<h3>Installation.</h3>
+
+<p>
+Tested on several Unix flavours and Windows. You must have Perl, Maxima and Scilab
+installed (<tt>maxima</tt> and <tt>perl</tt> should preferably be in the path variable).
+</p>
+
+<p>
+For checking that Maxima is in your path and that you have the right version, type
+<tt>maxima --version</tt> in some command tool. The version should be 5.9.3
+or higher. Binaries of Maxima can be downloaded
+from <a href="http://maxima.sourceforge.net/download.shtml">here</a> (note that Fedora Core
+rpm's work well on other rpm-based Linux distributions and can also be used on Debian-based
+distributions via <tt>alien</tt>).
+</p>
+
+<p>
+Perl is usually available on Unix platforms. For Windows, Perl binaries can be downloaded from
+<a href="http://www.activestate.com/Products/ActivePerl/?mp=1">here</a>.
+</p>
+
+<p>
+<b>Installation of the Symbolic Toolbox</b> for a single user.
+It is assumed that the module OVLD and the Symbolic toolbox were unzipped
+in a directory where you have write access. Installation requires four steps.
+<ul>
+  <li>Add the following line in the <tt>scilab.quit</tt> file located in the
+  Scilab installation directory (path given by typing <tt>SCI</tt> in Scilab):
+  <center>
+  <tt>if exists('MAX'); <tt class="function">killserver</tt>(%t); end;</tt>
+  </center>
+  If  you don't have write access to this file, you must
+  type <tt class="function">killserver</tt>
+  each time before leaving Scilab.</li>
+
+  <li>From the 'file' menu of a Scilab window, navigate to the directory <tt>SYM</tt>
+  where the symbolic toolbox was unzipped and execute <tt>builder.sce</tt>, then,
+  <tt>loader.sce</tt>.</li>
+
+  <li><a class="intext" href="overload.html#installation">Install the module for overloading functions</a>:
+    From the 'file' menu of a Scilab window, navigate to the directory <tt>OVLD</tt>
+    where this module was unzipped and execute <tt>builder.sce</tt> and then, <tt>loader.sce</tt>.
+  </li>
+
+  <li>From Scilab, invoke the function <tt class="function">restartserver</tt>.
+  Note that this function will kill all already running Maxima tasks.</li>
+</ul>
+<b>Next time you start Scilab</b>, it suffices to execute both <tt>loader.sce</tt> scripts
+(<tt>/OVLD/loader.sce</tt> and <tt>/SYM/loader.sce</tt>).
+It is better to execute these scripts from the <tt>.scilab</tt> startup
+file for automatic loading. This file should be in
+<tt title="Add exec('path_to_unziped_toolbox/SYM/loader.sce'); to the .scilab file">&lt;HOME DIRECTORY&gt;\Scilab\scilab-x.x\</tt>
+(Windows) or in <tt>~/.Scilab/scilab-x.x/</tt> (Unixes).
+</p>
+
+<p><table class = "button"><tr><td class = "button"><a href="index.html">TOP</a></td></tr></table></p>
+<!-- ================================================================ -->
+<p><hr></p>
+<a name="more"></a>
+<h3>More information.</h3>
+
+<p>
+<a name="server"></a>
+<a name="f_killserver"></a><a name="f_restartserver"></a><a name="f_findpid"></a>
+<b>Communication Scilab&nbsp;/ Maxima.</b>
+Scilab and Maxima communicate through a server which is launched by the <tt>loader.sce</tt>
+script. Maxima is also launched in client mode by this script. The proposed
+server is provisional, it must be shut down by editing the <tt>scilab.quit</tt> file
+(see above) or manually by invoking the function
+<tt class="function">killserver</tt> from Scilab. Note that if you have a
+firewall, communication with "tcp" protocol on ports 2000, 2001 should be enabled.
+</p>
+
+<p>
+In case of problem, you can re-initialize Maxima and the server by invoking the function
+<tt class="function">restartserver</tt>. If Scilab freezes you should re-initialize
+by killing manually <tt>maxima</tt> and <tt>perl/serveur</tt> tasks. On Unixes you
+can identify PID's of tasks to be killed by invoking the function
+<tt class="function">findpid</tt>.
+</p>
+
+<p>
+<b>It doesn't work.</b> Known issues:
+<ul>
+  <li>Check that the script <tt>SYM/server/serveur.sce</tt> can find Maxima. It is better to add the
+  path to the Maxima binary in you <tt>PATH</tt> variable. Alternatively, for Windows users, modify the
+  string array <tt>search_maxima</tt> of <tt>SYM/server/serveur.sce</tt> by adding the actual
+  path to the Maxima binary.</li>
+  <li>For only one out of the numerous tested platforms (FreeBSD 6.0) the connection of Maxima
+  to the server (used for communication between Maxima and Scilab) might be launched before
+  the server is started. In this case, add the <tt>halt;</tt> instruction just after the server is launched
+  (see script <tt>SYM/server/serveur.sce</tt>).</li>
+  <li>For *BSD platforms, replace <tt>ps -edf</tt> by <tt>ps -xa</tt> in the function
+  <tt>SYM/macros/findpid.sci</tt>.</li>
+</ul>
+</p>
+
+<p>
+<b>It is slow.</b>
+<a name="interface"></a>The principle used for communication between Maxima and Scilab is not optimal.
+Obtaining faster responses is the main issue before further developments. It is however possible to
+accelerate responses by setting the Scilab global variable <tt>INTERFACE</tt> to
+<ul>
+  <li><tt>INTERFACE = "sparc"</tt> on Solaris Sparc.</li>
+  <li><tt>INTERFACE = "lin86"</tt> on Linux x86.</li>
+  <li><tt>INTERFACE = "bsd86"</tt> on *BSD x86.</li>
+  <li><tt>INTERFACE = "perl"</tt> to go back to the default settings.</li>
+</ul>
+(a Perl script is replaced by a compiled interface).
+</p>
+
+<p><table class = "button"><tr><td class = "button"><a href="index.html">TOP</a></td></tr></table></p>
+<!-- ================================================================ -->
+
+
+</td></tr></table></center>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body></html>

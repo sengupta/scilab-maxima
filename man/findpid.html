@@ -1,0 +1,45 @@
+<html><head>
+<title>SymT function: findpid</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Find the <font color="green"><tt>pid</tt></font> of Unix tasks containing <font color="green"><tt><font color="green"><tt>str1</tt></font></tt></font> or both <font color="green"><tt><font color="green"><tt>str1</tt></font></tt></font> and <font color="green"><tt><font color="green"><tt>str2</tt></font></tt></font> <br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[pid] = <font color="green"><tt>findpid</tt></font>(str1[,str2])</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt><font color="green"><tt>str1</tt></font></tt></font></b>&nbsp;: &nbsp;
+String to be searched in task description</li>
+<li><b><font color="green"><tt><font color="green"><tt>str2</tt></font></tt></font></b>&nbsp;: &nbsp;
+String to be searched in task description.
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>pid</tt></font></b>&nbsp;: &nbsp;
+Vector of <font color="green"><tt>pid</tt></font>'s.
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="restartserver.html"><font color="green"><tt>restartserver</tt></font></a>, <a href="killserver.html"><font color="green"><tt>killserver</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+ EXAMPLE
+    findpid('scilex')
+</pre></font>
+</body>
+</html>

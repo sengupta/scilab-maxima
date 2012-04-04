@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="manually generated">
+   <meta name="keywords" content="maxima,scilab,symbolic,toolbox">
+   <meta name="description" content="Tutorial: Symbolic Toolbox for Scilab.">
+
+<title>Access to Maxima, communication Scilab&nbsp;/ Maxima.</title>
+<link rel="stylesheet" href="../brown.css" type="text/css">
+<link rel="shortcut icon" href="../favicon.ico"/>
+</head>
+
+<body text="#330000" bgcolor="#cccccc" link="#000000" vlink="#000000" alink="#000000">
+
+<center><table class="bod"><tr><td>
+
+<a name="top"></a>
+<h1>Access to Maxima, communication Scilab&nbsp;/ Maxima.</h1>
+
+<p><hr></p>
+
+<ul>
+ <li><a class="intext" href="objects.html">Symbolic object generation</a></li>
+ <li><a class="intext" href="elementary.html">Elementary / trigonometric functions</a></li>
+ <li><a class="intext" href="polynomial.html">Polynomial / rational functions</a></li>
+  <li><a class="intext" href="matrix.html">Matrix manipulations</a></li>
+  <li><a class="intext" href="calculus.html">Calculus</a></li>
+  <li><a class="intext" href="numerical.html">Evaluation and substitution</a></li>
+  <li><a class="intext" href="general.html">General functions</a></li>
+  <li><span class="focus">Access to Maxima, communication Scilab&nbsp;/ Maxima</span>
+     <ul>
+         <li><a title="" href="#f_maxima"><tt class="function">maxima</tt></a></li>
+         <li><a title="" href="#f_mexec"><tt class="function">mexec</tt>, <tt class="function">mclear</tt></a></li>
+         <li><a title="" href="#f_mhlp"><tt class="function">mhlp</tt>, <tt class="function">minfo</tt></a></li>
+     </ul></li>
+</ul>
+
+<p><table class = "button"><tr>
+   <td class = "button"><a href="../index.html">INDEX</a></td>
+   <td class = "button"><a href="../functions.html">FUNCTIONS</a></td>
+</tr></table></p>
+
+<!-- ================================================================ -->
+
+<p><hr></p>
+
+<p>
+<a name="f_maxima"></a>
+The function <tt class="function">maxima</tt> permits the user to call directly
+Maxima functions provided that these functions return a symbolic object (matrix or scalar)
+rather than nested symbolic lists. The first argument
+is a string corresponding to a Maxima function name, other arguments are strings,
+sym-objects or syml-objects ordered as the arguments of the Maxima function
+(the function <a href="#f_mhlp"><tt class="function">mhlp</tt></a> displays Maxima help in Scilab).
+<pre>
+<span class="cc">// Maxima command: factorsum(a*x*z+a*z+a*w*x+v*x+u*x+a*w+v+u)</span>
+
+   <tt class="function">maxima</tt>('factorsum','a*x*z+a*z+a*w*x+v*x+u*x+a*w+v+u')
+
+   <span class="mresults">ans  =
+
+   (x+1)*(a*(z+w)+v+u)</span>
+</pre>
+</p>
+
+<p>
+In the case of simple symbolic lists (even containing equalities), it
+is still possible in some cases to use the
+function <tt class="function">maxima</tt>.
+<pre>
+<span class="cc">// Maxima command: solve([a*x+b*y=3,a*x*y=2],[x,y])</span>
+
+   equ = <tt class="function">syml</tt>(['a*x+b*y=3','a*x*y = 2']);
+   unc = <tt class="function">syml</tt>(['x','y']);
+   R = <tt class="function">maxima</tt>('solve',equ,unc)
+
+   <span class="mresults">R  =
+
+   x: [2x1 sym]
+   y: [2x1 sym]</span>
+
+   R.x
+
+   <span class="mresults">ans  =
+
+   !(3-sqrt(9-8*b))/(2*a)  !
+   !                       !
+   !(sqrt(9-8*b)+3)/(2*a)  !</span>
+
+   R.y(2)
+
+   <span class="mresults">ans  =
+
+   4/(sqrt(9-8*b)+3)</span>
+</pre>
+Note that the function <tt class="function">syml</tt> is used for defining symbolic
+lists. This is due to a strange distinction between matrices an lists in Maxima
+(rows of matrices are lists). Use the function
+<a href="#f_mhlp"><tt class="function">mhlp</tt></a> to know if Maxima expects
+a list or a matrix.
+</p>
+
+<p>
+Finally, if Maxima output cannot be interpreted, it is returned as a string:
+<pre>
+<span class="cc">// Maxima command: eigenvalues(matrix([a,2*b],[1,3]))</span>
+
+   <tt class="function">syms</tt> a b
+   M = [a 2*b;1 3];
+   <tt class="function">maxima</tt>('eigenvalues',M)
+
+   <span class="mresults">ans  =
+
+   [[-(sqrt(8*b+a^2-6*a+9)-a-3)/2,(sqrt(8*b+a^2-6*a+9)+a+3)/2],[1,1]]</span>
+</pre>
+(Use preferably the function <a href="#f_eig"><tt class="function">eig</tt></a> for computing eigenvalues.)
+</p>
+
+<a name="f_mexec"></a><a name="f_mclear"></a>
+<p>
+The function <tt class="function">mexec</tt> executes commands in Maxima workspace, for
+example for loading a library, for assigning a numerical value or declaring a symbolic type.
+The function <tt class="function">mclear</tt> clears assignments in Maxima workspace (in particular
+resulting of the use of <tt class="function">mexec</tt> commands).
+<pre>
+<span class="cc">// Set a = 3 and b = 6 in Maxima workspace</span>
+
+   <tt class="function">mexec</tt>('a:3;b:6');
+   <tt class="function">syms</tt> a b
+   b*a
+
+   <span class="mresults">ans  =
+
+   18</span>
+
+<span class="cc">// Clear a and b in Maxima workspace</span>
+
+   <tt class="function">mclear</tt> a b
+   b*a
+
+   <span class="mresults">ans  =
+
+   a*b</span>
+</pre>
+Other example
+<pre>
+   <tt class="function">syms</tt> x
+   q  = <tt class="function">sin</tt>(3*x)/<tt class="function">sin</tt>(x)+x
+
+<span class="cc">// Set to true the Maxima global variable exponentialize</span>
+
+   <tt class="function">mexec</tt>('exponentialize:true');
+
+   q
+
+   <span class="mresults">q  =
+
+   (exp(3*%i*x)-%e^-(3*%i*x))/(exp(%i*x)-%e^-(%i*x))+x</span>
+
+<span class="cc">// Converse</span>
+
+   <tt class="function">mexec</tt>('exponentialize:false');
+
+   q
+
+   <span class="mresults">q  =
+
+   sin(3*x)/sin(x)+x</span>
+</pre>
+</p>
+
+<p>
+<a name="f_mhlp"></a><a name="f_minfo"></a>
+Other functions:
+<ul>
+  <li><tt class="function">mhlp</tt> displays Maxima help. Usually invoke this
+      function as <tt class="function">mhlp</tt> <tt>name_of_function</tt> and then select an item in the
+      displayed list. If you know which item you want to display (say the 2nd one), type directly
+      <tt class="function">mhlp</tt> <tt>name_of_function 2</tt>.</li>
+  <li><tt class="function">minfo</tt> displays the version an location of the active Maxima program.</li>
+</ul>
+</p>
+
+
+<p><table class = "button"><tr><td class = "button"><a href="kernel.html">TOP</a></td></tr></table></p>
+</td></tr></table></center>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body></html>

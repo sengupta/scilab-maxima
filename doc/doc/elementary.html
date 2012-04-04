@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="manually generated">
+   <meta name="keywords" content="maxima,scilab,symbolic,toolbox">
+   <meta name="description" content="Tutorial: Symbolic Toolbox for Scilab.">
+
+<title>Elementary functions</title>
+<link rel="stylesheet" href="../brown.css" type="text/css">
+<link rel="shortcut icon" href="../favicon.ico"/>
+</head>
+
+<body text="#330000" bgcolor="#cccccc" link="#000000" vlink="#000000" alink="#000000">
+
+<center><table class="bod"><tr><td>
+
+<a name="top"></a>
+<h1>Elementary functions</h1>
+
+<p><hr></p>
+
+
+<ul>
+ <li><a class="intext" href="objects.html">Symbolic object generation</a></li>
+ <li><span class="focus">Elementary / trigonometric functions</span>
+     <ul>
+         <li><a title="Complex numbers manipulation" href="#f_real"><tt class="function">real</tt>, <tt class="function">imag</tt>, <tt class="function">conj</tt>, <tt class="function">abs</tt></a></li>
+         <li><a title="" href="#f_log"><tt class="function">log</tt>, <tt class="function">exp</tt>, <tt class="function">sqrt</tt></a></li>
+         <li><a title="Classical / hyperbolic trigonometry" href="#trigo"><tt class="function">sin</tt>, <tt class="function">cos...</tt></a></li>
+     </ul></li>
+ <li><a class="intext" href="polynomial.html">Polynomial / rational functions</a></li>
+ <li><a class="intext" href="matrix.html">Matrix manipulations</a></li>
+ <li><a class="intext" href="calculus.html">Calculus</a></li>
+ <li><a class="intext" href="numerical.html">Evaluation and substitution</a></li>
+ <li><a class="intext" href="general.html">General functions</a></li>
+ <li><a class="intext" href="kernel.html">Access to Maxima, communication Scilab&nbsp;/ Maxima</a></li>
+</ul>
+
+<p><table class = "button"><tr>
+   <td class = "button"><a href="../index.html">INDEX</a></td>
+   <td class = "button"><a href="../functions.html">FUNCTIONS</a></td>
+</tr></table></p>
+
+<!-- ================================================================ -->
+
+<p><hr></p>
+<a name="f_abs"></a>
+<a name="f_conj"></a>
+<a name="f_real"></a>
+<a name="f_imag"></a>
+<p>
+All the functions presented here are considered element-wise if applied to a matrix.
+</p>
+
+<p>
+Of course, the results below depend on the <tt>real</tt> declaration.
+<pre>
+   <tt class="function">syms</tt> a b real
+   c = a + %i*b;
+   <tt class="function">conj</tt>(c)
+
+   <span class="mresults">ans  =
+
+   a-%i*b  <span class="cc">// Result depending on Maxima version</span></span>
+
+   <tt class="function">real</tt>(c)
+
+   <span class="mresults">ans  =
+
+   a</span>
+
+   <tt class="function">imag</tt>(c)
+
+   <span class="mresults">ans  =
+
+   b</span>
+
+   <tt class="function">abs</tt>(c)
+
+   <span class="mresults">ans  =
+
+   sqrt(b^2+a^2)</span>
+</pre>
+</p>
+<a name="otherfunc"></a>
+<a name="f_log"></a>
+<a name="f_exp"></a>
+<p>
+ <i>Remark: the function <tt class="function">exp</tt> still has several bugs.</i>
+<pre>
+   <tt class="function">syms</tt> a b real
+   c = a + %i*b;
+   <tt class="function">log</tt>(c)
+
+   <span class="mresults">ans  =
+
+   log(%i*b+a)</span>
+
+   <tt class="function">exp</tt>(ans)
+
+   <span class="mresults">ans  =
+
+   %i*b+a</span>
+</pre>
+</p>
+
+<p>
+<a name="trigo"></a>
+Lets us consider rotation matrices. Multiplying rotation matrices
+corresponds to adding angles as checked now.
+<pre>
+   <tt class="function">syms</tt> a b real
+   Ma = [<tt class="function">cos</tt>(a) <tt class="function">sin</tt>(a);-<tt class="function">sin</tt>(a) <tt class="function">cos</tt>(a)];
+   Mb = [<tt class="function">cos</tt>(b) <tt class="function">sin</tt>(b);-<tt class="function">sin</tt>(b) <tt class="function">cos</tt>(b)];
+   Ma*Mb
+
+   <span class="mresults">ans  =
+
+   !cos(a)*cos(b)-sin(a)*sin(b)   cos(a)*sin(b)+sin(a)*cos(b)  !
+   !                                                           !
+   !-cos(a)*sin(b)-sin(a)*cos(b)  cos(a)*cos(b)-sin(a)*sin(b)  !</span>
+
+   <tt class="function">simple</tt>(ans)
+
+   <span class="mresults">ans  =
+
+   !cos(b+a)   sin(b+a)  !
+   !                     !
+   !-sin(b+a)  cos(b+a)  !</span>
+
+   <tt class="function">simple</tt>(Ma'*Ma)
+
+   <span class="mresults">ans  =
+
+   !1  0  !
+   !      !
+   !0  1  !</span>
+</pre>
+</p>
+<b>Trigonometric functions</b>:
+      <tt class="function">cos</tt>,
+      <tt class="function">acos</tt>,
+      <tt class="function">cosh</tt>,
+      <tt class="function">acosh</tt>,
+      <tt class="function">sin</tt>,
+      <tt class="function">asin</tt>,
+      <tt class="function">sinh</tt>,
+      <tt class="function">asinh</tt>,
+      <tt class="function">tan</tt>,
+      <tt class="function">atan</tt>,
+      <tt class="function">tanh</tt>,
+      <tt class="function">atanh</tt>,
+      <tt class="function">cotg</tt>,
+      <tt class="function">coth</tt>.
+
+<p><table class = "button"><tr><td class = "button"><a href="elementary.html">TOP</a></td></tr></table></p>
+</td></tr></table></center>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body></html>

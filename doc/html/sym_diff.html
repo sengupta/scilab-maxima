@@ -1,0 +1,56 @@
+<html><head>
+<title>SymT function: %sym_diff</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: %sym_diff</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>Differentiates symbolic expressions using the Maxima function diff.</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[B] = <tt class="function">diff</tt>(A,x1)</tt></li>
+<li><tt>[B] = <tt class="function">diff</tt>(A,x1,n1,x2,n2,...)</tt></li>
+</ul>
+
+<p><b>Input arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>A</tt></td>
+<td class="args" width="80%">Symbolic expression.</td></tr>
+<tr><td class="args"><tt><tt>x1</tt>, <tt>x2</tt></tt></td>
+<td class="args">Symbolic atoms appearing in <tt>A</tt>: differentiation w.r.t. <tt>xi</tt></td></tr>
+<tr><td class="args"><tt><tt>n1</tt>, <tt>n2</tt></tt></td>
+<td class="args">Integers. Order of the differentiation w.r.t. <tt>xi</tt>, <tt>n1 = 1</tt>
+by default.
+</td></tr>
+</table></p>
+
+<p><b>Output arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>B</tt></td>
+<td class="args" width="80%">Symbolic expression.
+</td></tr>
+</table></p>
+
+<p><b>See also</b>: <a href="sym_integ.html"><tt class="function">sym/integ</tt></a>, <a href="sym_limit.html"><tt class="function">sym/limit</tt></a>, <a href="sym_taylor.html"><tt class="function">sym/taylor</tt></a>.</p><p><hr></p>
+
+<pre>
+<u>EXAMPLE</u>
+    syms a b
+    diff(a^3/b^4,a,2,b,2)
+    diff('a^3/b^4','a',2,'b',2)
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<html><head>
+<title>SymT function: coeffs</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: coeffs</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>Retrieves polynomial coefficients using the Maxima function ratcoeff.</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[cof] = <tt class="function">coeffs</tt>(A,x[,n])</tt></li>
+</ul>
+
+<p><b>Input arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>A</tt></td>
+<td class="args" width="80%">Polynomial symbolic expression. Don't use with rational
+expressions.</td></tr>
+<tr><td class="args"><tt>x</tt></td>
+<td class="args">Symbolic atom appearing in <tt>A</tt>.</td></tr>
+<tr><td class="args"><tt>n</tt></td>
+<td class="args">Integer, power of <tt>x</tt> in <tt>A</tt>. By default <tt>n</tt> = <tt>1</tt>
+</td></tr>
+</table></p>
+
+<p><b>Output arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>cof</tt></td>
+<td class="args" width="80%">Symbolic expression: coefficient of <tt>x</tt>^<tt>n</tt> in <tt>A</tt>
+</td></tr>
+</table></p>
+
+<p><b>See also</b>: <a href="numden.html"><tt class="function">numden</tt></a>, <a href="degrees.html"><tt class="function">degrees</tt></a>, <a href="findsym.html"><tt class="function">findsym</tt></a>.</p><p><hr></p>
+
+<pre>
+<u>EXAMPLES</u>
+    P = sym('(a+b+c)^3-(a+b+c)^2');
+    simple(P,'a')
+
+    cof_a_0 = coeffs(P,'a',0)
+    cof_a_1 = coeffs(P,'a',1)
+    cof_a_2 = coeffs(P,'a',2)
+    cof_a_3 = coeffs(P,'a',3)
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>

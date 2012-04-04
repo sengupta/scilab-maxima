@@ -1,0 +1,3 @@
+gcc -Wall -o interface.o -c interface.c
+gcc -o interface interface.o
+

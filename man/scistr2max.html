@@ -1,0 +1,47 @@
+<html><head>
+<title>SymT function: scistr2max</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Transforms a Scilab string array describing a matrix into a matrix compatible with Maxima.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[str2] = <font color="green"><tt>scistr2max</tt></font>(str1)</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt><font color="green"><tt>str1</tt></font></tt></font></b>&nbsp;: &nbsp;
+Simple string or array of strings or string of the form
+'<font color="green"><tt>[a,<font color="green"><tt>b</tt></font>;c,<font color="green"><tt>d</tt></font>]</tt></font>'
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt><font color="green"><tt>str2</tt></font></tt></font></b>&nbsp;: &nbsp;
+String compatible with Maxima
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="max2scistr.html"><font color="green"><tt>max2scistr</tt></font></a>, <a href="str2max2sym.html"><font color="green"><tt>str2max2sym</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLES</u>
+    scistr2max('a')
+    scistr2max('[a*b c^3*4;0 a*b/c^2]')
+    scistr2max(['a*b' 'c^3*4';'0' 'a*b/c^2'])
+    scistr2max('matrix([a*b,c^3*4],[0,a*b/c^2]')
+</pre></font>
+</body>
+</html>

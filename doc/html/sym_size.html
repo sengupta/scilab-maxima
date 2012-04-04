@@ -1,0 +1,48 @@
+<html><head>
+<title>SymT function: %sym_size</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: %sym_size</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>Computes the size of a <tt class="function">sym</tt>-object</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[n1n2] = <tt class="function">size</tt>(A)</tt></li>
+<li><tt>[n1,n2] = <tt class="function">size</tt>(A)</tt></li>
+<li><tt>[ni] = <tt class="function">size</tt>(A,ii)</tt></li>
+</ul>
+
+<p><b>Input arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>A</tt></td>
+<td class="args" width="80%">Symbolic matrix</td></tr>
+<tr><td class="args"><tt>ii</tt></td>
+<td class="args">integer equal to <tt>1</tt> or <tt>2</tt>
+</td></tr>
+</table></p>
+
+<p><hr></p>
+
+<pre>
+<u>EXAMPLE</u>
+   M = sym(['1' 'a' '2';'3' 'b' 'c'])
+   n1n2 = size(M)
+   [n1,n2] = size(M)
+   size(M,1)
+   size(M,2)
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>

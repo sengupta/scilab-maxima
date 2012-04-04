@@ -1,0 +1,51 @@
+<html><head>
+<title>SymT function: fortran</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Transforms a symbolic expression to a string compatible with LaTeX.<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[str] = <font color="green"><tt>fortran</tt></font>(expr[,M])</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>expr</tt></font></b>&nbsp;: &nbsp;
+Symbolic expression.</li>
+<li><b><font color="green"><tt>M</tt></font></b>&nbsp;: &nbsp;
+String correponding to the name of the expression <font color="green"><tt>expr</tt></font>.
+If <font color="green"><tt>expr</tt></font> is a matrix, this second argument is required,
+its value is '<font color="green"><tt>M</tt></font>' by default.
+
+</li>
+</ul><br>
+
+<font color="blue"><b>Output arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>str</tt></font></b>&nbsp;: &nbsp;
+Fortran string corresponding to '<font color="green"><tt>expr</tt></font>'
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="latex.html"><font color="green"><tt>latex</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLES</u>
+    syms a b c d
+    fortran(a^2+0.3*b/(0.5+c^2)^2)
+
+    X = [a^5*b 4;a*b*c^3*d a*d]
+    fortran(X,'M')
+</pre></font>
+</body>
+</html>

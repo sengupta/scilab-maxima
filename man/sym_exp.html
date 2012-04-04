@@ -1,0 +1,36 @@
+<html><head>
+<title>SymT function: %sym_exp</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Element-wise exponential of a symbolic matrix<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[A] = <font color="green"><tt>exp</tt></font>(B)</tt></font></b></li>
+</ul>
+<br>
+
+<br><font color="blue"><b>Caution</b></font><br>
+
+<br>The part of the function <font color="green"><tt><font color="green"><tt>max2scistr</tt></font></tt></font> concerning the function exp
+must be rewritten for supporting expressions like %e^-(...) and
+so on.
+<br><br>
+
+
+<hr>
+
+<font color="green"><pre>
+<u>EXAMPLE:</u>
+ syms a b c d
+ M = [a^5*b 4;a*b*c^3*d a*d]
+ P = exp(M)
+ P^2
+</pre></font>
+</body>
+</html>

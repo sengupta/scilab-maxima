@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="manually generated">
+   <meta name="keywords" content="maxima,scilab,symbolic,toolbox">
+   <meta name="description" content="Tutorial: overloading Scilab functions.">
+
+<title>Scilab Function Overloading Module</title>
+<link rel="stylesheet" href="brown.css" type="text/css">
+<link rel="shortcut icon" href="favicon.ico"/>
+</head>
+
+<body text="#330000" bgcolor="#cccccc" link="#000000" vlink="#000000" alink="#000000">
+
+<center><table class="bod"><tr><td>
+
+<a name="top"></a>
+<h1>Module for overloading Scilab functions</h1>
+
+<p><hr></p>
+
+April 2006.
+
+<ul>
+   <li><a class="intext" href="#introduction">What is it?</a></li>
+   <li><a class="intext" href="#howitworks">How does it work?</a></li>
+   <li><a class="intext" href="#installation">Installation</a></li>
+</ul>
+
+<p><table class = "button"><tr>
+   <td class = "button"><a href="index.html">INDEX</a></td>
+</tr></table></p>
+
+<!-- ================================================================ -->
+<p><hr></p>
+<a name="introduction"></a>
+<h3>What is it ?</h3>
+
+<p>
+<b>Overloading</b> means that, when a function is invoked with an object
+as input argument, it is not the standard funtion which is applied
+but a version specific to the considered object.
+</p>
+
+<p>
+For example, a function <tt>func</tt> specific to a <tt>typ</tt>-object <b>must be named</b>
+<tt>%typ_func</tt> (prefix <tt>%typ_</tt>). If <tt>x</tt> is a <tt>typ</tt>-object,
+typing <tt>func(x)</tt> will invoke automatically <tt>%typ_func(x)</tt>.
+</p>
+
+<p>
+What is called "<b>object</b>" here consists of a Scilab <tt>mlist</tt> (see <tt>help mlist</tt>).
+For example, a <tt>sym</tt>-object looks like
+<tt>x = mlist(['sym','str1'],'xxxxxx')</tt>, <tt>x.str1</tt> is equal to <tt>'xxxxxx'</tt>.
+</p>
+
+<p>
+A large number of Scilab <b>built-in functions</b> (not all unfortunately) take
+overloading into account. Examples of such functions: <tt>size</tt>, <tt>real</tt>,
+<tt>imag</tt>, <tt>abs</tt>, <tt>conj</tt>, <tt>log</tt>, <tt>exp</tt>, <tt>sqrt</tt>,
+<tt>cos</tt>, <tt>sin</tt>, <tt>acos</tt>, <tt>asin</tt>....
+</p>
+
+<p>
+This module permits the user to overload most <b>non-built-in functions</b>.
+It is a complement to the Symbolic Toolbox and to the Linear Fractional
+Representation Toolbox but it can also be used for any kinds of user-defined objects.
+</p>
+
+<p><table class = "button"><tr><td class = "button"><a href="overload.html">TOP</a></td></tr></table></p>
+<!-- ================================================================ -->
+<p><hr></p>
+<a name="howitworks"></a>
+<h3>How does it work?</h3>
+
+<p>
+Two main files:
+<ul>
+  <li><tt>updater.sce</tt>: Scilab script which generates automatically all the files required for
+  overloading. This script can be customized by defining a modified list of the functions which
+  must become overloadable. The default list is consistent with the Symbolic Toolbox and the Linear
+  Fractional Representation Toolbox.</li>
+  <li><tt>overloader.sci</tt>: Scilab function. This function checks the nature of the first input
+  argument of invoked functions (if in the list defined in the above script)
+  and invokes the relevant function  (note that currently only the first input argument
+  is considered for this test).</li>
+</ul>
+</p>
+
+<p>
+The functions listed in <tt>updater.sce</tt> are treated as follows (three cases):
+<ul>
+  <li>Built-in functions are ignored.</li>
+  <li>Existing Scilab function case: The original function is copied in <tt>OVLD/macros</tt> and renamed
+  with the prefix <tt>%old_</tt>, in addition, this prefix is also added to the function
+  name inside the file. A new file having the original name is created in <tt>OVLD/macros</tt>
+  but this new function just calls <tt>overloader.sci</tt> which selects the function
+  to be really invoked (add prefix <tt>%old_</tt> or a prefix corresponding to the object class
+  of the first input argument).</li>
+  <li>Non-existing Scilab function case: As above, except that the file with prefix <tt>%old_</tt>
+  only contains an error message.</li>
+</ul>
+</p>
+
+<p><table class = "button"><tr><td class = "button"><a href="overload.html">TOP</a></td></tr></table></p>
+<!-- ================================================================ -->
+<p><hr></p>
+<a name="installation"></a>
+<h3>Installation.</h3>
+
+<b>First time you use this module</b>. After you have unzipped the file containing this module:
+
+<ul>
+<li>If this module is used only as a complement of the Symbolic Toolbox
+or of the Linear Fractional Representation Toolbox, skip this item. Otherwise,
+open the file <tt>updater.sce</tt> in a text editor and modify the vector of strings
+containing the names of the functions to be overloaded. Finally
+From the 'file' menu of a Scilab window, navigate to the directory <tt>OVLD</tt>
+where this module was unzipped and execute <tt>updater.sce</tt>.
+</li>
+<li>
+From the 'file' menu of a Scilab window, navigate to the directory <tt>OVLD</tt>
+where this module was unzipped and execute <tt>builder.sce</tt> and then,
+<tt>loader.sce</tt>.
+</li>
+</ul>
+
+
+
+
+<b>Next time you start Scilab</b>, it suffices to execute the <tt>loader.sce</tt> scripts.
+It is better to execute this script from the <tt>.scilab</tt> startup
+file for automatic loading. This file should be in
+<tt>&lt;HOME DIRECTORY&gt;\Scilab\scilab-x.x\</tt>
+(Windows) or in <tt>~/.Scilab/scilab-x.x/</tt> (Unixes).
+</p>
+
+
+<p><table class = "button"><tr><td class = "button"><a href="overload.html">TOP</a></td></tr></table></p>
+<!-- ================================================================ -->
+
+
+</td></tr></table></center>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body></html>

@@ -1,0 +1,42 @@
+<html><head>
+<title>SymT function: %sym_symsum</title>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<br><font color="blue"><b>Purpose</b></font><br>
+
+<br>Series summation<br><br>
+
+
+<br><font color="blue"><b>Synopsis</b></font><br>
+
+<ul>
+<li><b><font color="green"><tt>[sym1] = <font color="green"><tt>symsum</tt></font>(A,nn,n_min,n_max)</tt></font></b></li>
+</ul>
+<br>
+
+<font color="blue"><b>Input arguments</b></font>
+
+<br><ul>
+<li><b><font color="green"><tt>A</tt></font></b>&nbsp;: &nbsp;
+Symbolic expression</li>
+<li><b><font color="green"><tt>nn</tt></font></b>&nbsp;: &nbsp;
+Integer symbolic variable for series summation</li>
+<li><b><font color="green"><tt><font color="green"><tt>n_min</tt></font></tt></font></b>&nbsp;: &nbsp;
+First value of <font color="green"><tt>nn</tt></font> for summation</li>
+<li><b><font color="green"><tt><font color="green"><tt>n_max</tt></font></tt></font></b>&nbsp;: &nbsp;
+Last value of <font color="green"><tt>nn</tt></font> for summation
+
+</li>
+</ul><br>
+
+<br><font color="blue"><b>See also</b></font>: <a href="sym_int.html"><font color="green"><tt>sym/int</tt></font></a>.<br><hr>
+
+<font color="green"><pre>
+<u>EXAMPLE</u>
+    syms a n
+    symsum(a^(-n),n,0,10)
+    symsum(a^(-n),n,0,%inf)
+</pre></font>
+</body>
+</html>

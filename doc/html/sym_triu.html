@@ -1,0 +1,58 @@
+<html><head>
+<title>SymT function: %sym_triu</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: %sym_triu</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>Upper triangular form of a matrix
+</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[B] = <tt class="function">triu</tt>(A[,kk])</tt></li>
+</ul>
+
+<p><b>Input arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>A</tt></td>
+<td class="args" width="80%">Symbolic matrix</td></tr>
+<tr><td class="args"><tt>kk</tt></td>
+<td class="args">Integer. By default <tt>kk</tt>=<tt>0</tt>. If <tt>kk</tt> is negative |<tt>kk</tt>| lower subdiagonals are not set to zero. If <tt>kk</tt> is positive, the main
+diagonal and the <tt>kk</tt>-<tt>1</tt> following upper subdiagonals are set
+to zero.
+</td></tr>
+</table></p>
+
+<p><b>Output arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>B</tt></td>
+<td class="args" width="80%">Upper diagonal form of <tt>A</tt> if <tt>kk</tt> = <tt>0</tt>,...
+</td></tr>
+</table></p>
+
+<p><b>See also</b>: <a href="sym_tril.html"><tt class="function">sym/tril</tt></a>, <a href="sym_diag.html"><tt class="function">sym/diag</tt></a>, <a href="sym_rref.html"><tt class="function">sym/rref</tt></a>.</p><p><hr></p>
+
+<pre>
+<u>EXAMPLES
+</u>
+    syms a b c d
+    X = [a^5*b 4 c;a*b a*d c^3*d;1 2 a]
+    triu(X)
+    triu([X X],1)
+    triu([X X],-1)
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>

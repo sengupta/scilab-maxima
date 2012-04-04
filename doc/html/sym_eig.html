@@ -1,0 +1,59 @@
+<html><head>
+<title>SymT function: %sym_eig</title>
+<link rel='stylesheet' href='../brown.css'>
+</head>
+<body bgcolor='#FFFFFF' text='#000000'>
+
+<center><table class="bod"><tr><td>
+
+<table class="button"><tr><td class="button"><a href="../functions.html">FUNCTIONS</a></td></tr></table>
+
+<p><h1>Function: %sym_eig</h1></p>
+
+<p><b>Purpose</b></p>
+
+<p>Computes the eigenvalues and eigenvectors of a symbolic matrix using the Maxima functions eigenvalues or eigenvectors.</p>
+
+<p><b>Synopsis</b></p>
+
+<ul>
+<li><tt>[Vec,Val] = <tt class="function">eig</tt>(A)</tt></li>
+<li><tt>[Val] = <tt class="function">eig</tt>(A)</tt></li>
+</ul>
+
+<p><b>Caution</b></p>
+
+Invoke preferably this function with only one output argument as
+eigenvector computation is not reliable. Often, the length of
+the string corresponding to the result is so long that Scilab
+freezes.
+<p><b>Input arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>A</tt></td>
+<td class="args" width="80%">Symbolic square matrix.
+</td></tr>
+</table></p>
+
+<p><b>Output arguments</b></p>
+
+<p><table border="0" class="button" width="100%">
+<tr><td class="args" width="20%"><tt>Val</tt></td>
+<td class="args" width="80%">Vector of the eigenvalues of <tt>A</tt> if one output argument or
+diagonal form of <tt>A</tt> if two output arguments.</td></tr>
+<tr><td class="args"><tt>Vec</tt></td>
+<td class="args">Matrix of the eigenvectors of <tt>A</tt>
+</td></tr>
+</table></p>
+
+<p><b>See also</b>: <a href="sym_trace.html"><tt class="function">sym/trace</tt></a>, <a href="sym_diag.html"><tt class="function">sym/diag</tt></a>.</p><p><hr></p>
+
+<pre>
+<u>EXAMPLE</u>
+    A = sym(['a-b','a-b';'2','a+b'])
+    Val = eig(A)
+</pre>
+</td></tr></table></center>
+
+</body>
+</html>
