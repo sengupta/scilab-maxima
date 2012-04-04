@@ -28,4 +28,4 @@ Alternative Toolboxes
 I suggest you reconsider the use of this toolbox for any symbolic computation needs in production. Here are a few possible alternatives. 
 
 * The [SciMax](http://forge.scilab.org/index.php/p/scimax/) toolbox by Calixte Denizet also integrates with Maxima. 
-* There is a [Symbolic Computing](http://forge.scilab.org/index.php/p/symcomp/) toolbox by @jorgeecardona on Scilab Forge. I'm not sure what the status is with this project. 
+* There is a [Symbolic Computing](http://forge.scilab.org/index.php/p/symcomp/) toolbox by [Jorge Cardona](https://github.com/jorgeecardona) on Scilab Forge. I'm not sure what the status is with this project. 
