@@ -13,7 +13,7 @@ Most functions have a syntax similar to the MATLAB Symbolic Toolbox, although th
 
 This toolbox requires Perl, Maxima and Scilab to be installed on your computer. This toolbox has been used successfully on several Unix flavours and on Windows.
 
-Due to the unfortunate demise of JFM, this is no longer maintained. In particular, the toolbox does not load in the latest versions of Scilab since certain functions have been deprecated in Scilab since this toolbox was authored. A workaround is the issue the following two aliasing commands:
+Due to the unfortunate demise of JFM, this is no longer maintained. In particular, the toolbox does not load in the latest versions of Scilab since certain functions have been deprecated in Scilab since this toolbox was authored. A workaround is the issue the following two aliasing commands before you load the toolbox:
 
     sort = gsort;
     maxi = max;
