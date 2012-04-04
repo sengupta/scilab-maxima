@@ -7,4 +7,8 @@ The home page for this project used to be available [here](http://www.cert.fr/dc
 
 This repository is a continuation of the project according to his wishes, expressed about 2 months before his passing [here](https://groups.google.com/group/comp.soft-sys.math.scilab/msg/f0d07290f0b18099). 
 
+Alternative Toolboxes
+---------------------
 
+* The [SciMax](http://forge.scilab.org/index.php/p/scimax/) toolbox by Calixte Denizet also integrates with Maxima. 
+* There is a [Symbolic Computing](http://forge.scilab.org/index.php/p/symcomp/) toolbox by @jorgeecardona on Scilab Forge. I'm not sure what the status is with this project. 
